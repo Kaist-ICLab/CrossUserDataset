@@ -8,18 +8,21 @@ __pycache__/
 .venv
 env/
 venv/
+myenv/
 
 # Tool caches
 .cache/
 .mypy_cache/
 .pytest_cache/
 .ipynb_checkpoints/
+.vscode/
 
 # Dataset artifacts
 results/
 selected_users_dataset/
 *.pkl
 *.npy
+data/
 
 # OS junk
 .DS_Store

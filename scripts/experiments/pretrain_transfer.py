@@ -32,7 +32,7 @@ def main() -> None:
     parser.add_argument("--cache-dir", type=Path, default=Path(".cache/domain_adaptation"), help="Directory to store cached artifacts.")
     parser.add_argument("--output-csv", type=Path, default=Path("results/domain_adaptation_results.csv"), help="Path to write aggregated CSV results.")
     parser.add_argument("--fine-tune-ratios", type=float, nargs="*", default=[0.0, 0.2, 0.4, 0.6], help="Ratios of target test data used for post-training fine-tuning.")
-    parser.add_argument("--seeds", type=int, nargs="*", default=[42, 43, 44, 45], help="Random seeds applied to fine-tuning splits and model initialisation.")
+    parser.add_argument("--seeds", type=int, nargs="*", default=[42, 43, 44, 45, 46], help="Random seeds applied to fine-tuning splits and model initialisation.")
     parser.add_argument("--model-types", type=str, nargs="*", default=["tree", "transformer"], choices=["tree", "transformer"], help="Model families to evaluate.")
     parser.add_argument("--val-size", type=float, default=0.2, help="Validation share of the training data for stratified shuffle strategy.")
     parser.add_argument("--test-size", type=float, default=0.2, help="Test share of the dataset for stratified shuffle strategy.")

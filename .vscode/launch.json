@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug Pretrain Transfer",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/scripts/experiments/pretrain_transfer.py",
+            "args": [
+                "--model-types",
+                "transformer"
+            ],
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "justMyCode": false,
+            "stopOnEntry": false
+        }
+    ]
+}
