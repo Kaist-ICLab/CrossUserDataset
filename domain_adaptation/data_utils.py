@@ -13,12 +13,14 @@ from sklearn.model_selection import StratifiedGroupKFold, train_test_split
 
 from .cache_utils import CacheManager
 
+LOG_SCALE_PREFIXES: Tuple[str, ...] = ("DATA_MRCV", "DATA_RCV", "DATA_SNT", "DATA_MSNT")
+
 
 DEFAULT_DATASET_PATHS: Mapping[str, str] = {
-    # Guesses based on the developer environment. Override as needed.
-    "D-1": "~/Desktop/KAIST-collab/UBICOMP/data/D-2/stress_binary_personal-full.pkl",
-    "D-2": "~/Desktop/KAIST-collab/UBICOMP/data/D-3/stress_binary_personal-full_D#3.pkl",
-    "D-3": "~/Desktop/KAIST-collab/UBICOMP/data/D-4/stress_binary_personal-current.pkl",
+    # Environment-specific defaults; override via CLI as needed.
+    "D-1": "~/minseo/Archived/stress_binary_personal-current_D#2.pkl",
+    "D-2": "~/minseo/Archived/stress_binary_personal-current_D#3.pkl",
+    "D-3": "~/minseo/Archived/stress_binary_personal-current.pkl",
 }
 
 FEATURE_NAME_NORMALIZATION: Mapping[str, str] = {
@@ -225,19 +227,109 @@ class DatasetStore:
 # ---------------------------------------------------------------------------
 
 
+def augment_temporal_and_group_features(
+    bundles: Sequence[DatasetBundle],
+) -> List[DatasetBundle]:
+    if not bundles:
+        return []
+    all_pids = sorted({pid for bundle in bundles for pid in bundle.groups})
+    pid_to_idx = {pid: idx for idx, pid in enumerate(all_pids)}
+    augmented: List[DatasetBundle] = []
+    for bundle in bundles:
+        df = bundle.features.copy()
+        pid_series = pd.Series(bundle.groups, index=df.index, name="PID")
+        heavy_cols = [col for col in df.columns if col.split("#", 1)[0] in LOG_SCALE_PREFIXES]
+        if heavy_cols:
+            numeric = df[heavy_cols].apply(pd.to_numeric, errors="coerce")
+            transformed = np.sign(numeric) * np.log1p(np.abs(numeric))
+            df[heavy_cols] = transformed
+
+        # Per-user normalization (z-score) for all sensor features.
+        user_means = df.groupby(pid_series).transform("mean")
+        user_stds = df.groupby(pid_series).transform("std").replace(0, np.nan)
+        df = (df - user_means) / (user_stds + 1e-8)
+        df = df.fillna(0.0)
+
+        timestamps = pd.to_datetime(pd.Series(bundle.timestamps), errors="coerce")
+        hours = (timestamps.dt.hour.fillna(0).astype(float) + timestamps.dt.minute.fillna(0).astype(float) / 60.0).fillna(0.0)
+        dow = timestamps.dt.dayofweek.fillna(0).astype(float)
+        # Base temporal/group features.
+        extra = pd.DataFrame(
+            {
+                "TOD_SIN": np.sin(2 * np.pi * hours / 24.0),
+                "TOD_COS": np.cos(2 * np.pi * hours / 24.0),
+                "DOW_SIN": np.sin(2 * np.pi * dow / 7.0),
+                "DOW_COS": np.cos(2 * np.pi * dow / 7.0),
+            },
+            index=df.index,
+        )
+        df = pd.concat([df, extra], axis=1)
+        augmented.append(bundle.with_features(df))
+    return augmented
+
+
 def align_feature_intersection(
     bundles: Sequence[DatasetBundle],
+    *,
+    strategy: str = "intersection",
 ) -> Tuple[List[DatasetBundle], List[str]]:
+    """
+    Align feature spaces across bundles according to the requested strategy.
+
+    Args:
+        bundles: Ordered sequence of datasets to align. The last element is
+            assumed to be the target dataset when ``strategy`` is
+            ``source_union``.
+        strategy: One of ``intersection`` (shared features only), ``union`` /
+            ``all_union`` (keep every feature observed anywhere), or
+            ``source_union`` (keep only features that exist in at least one
+            source dataset, i.e., all bundles except the last entry).
+    """
     if not bundles:
         return [], []
-    common: set[str] = set(bundles[0].feature_names)
-    for bundle in bundles[1:]:
-        common &= set(bundle.feature_names)
-    if not common:
-        raise ValueError("No common features across provided datasets")
-    ordered = [name for name in bundles[0].feature_names if name in common]
-    aligned = [bundle.select_features(ordered) for bundle in bundles]
-    return aligned, ordered
+    normalized = strategy.lower()
+    valid = {"intersection", "union", "all_union", "source_union"}
+    if normalized not in valid:
+        raise ValueError(f"strategy must be one of {sorted(valid)}")
+    if normalized == "all_union":
+        normalized = "union"
+
+    if normalized == "intersection":
+        common: set[str] = set(bundles[0].feature_names)
+        for bundle in bundles[1:]:
+            common &= set(bundle.feature_names)
+        if not common:
+            raise ValueError("No common features across provided datasets")
+        ordered = [name for name in bundles[0].feature_names if name in common]
+        aligned = [bundle.select_features(ordered) for bundle in bundles]
+        return aligned, ordered
+
+    if normalized == "union":
+        seen: set[str] = set()
+        ordered: List[str] = []
+        for bundle in bundles:
+            for name in bundle.feature_names:
+                if name not in seen:
+                    seen.add(name)
+                    ordered.append(name)
+        aligned = [bundle.select_features(ordered) for bundle in bundles]
+        return aligned, ordered
+
+    # ``source_union`` only keeps features that appear in at least one source.
+    if len(bundles) < 2:
+        raise ValueError("source_union strategy requires at least one source and one target bundle")
+    seen: set[str] = set()
+    ordered = []
+    sources = bundles[:-1]
+    target = bundles[-1]
+    for bundle in sources:
+        for name in bundle.feature_names:
+            if name not in seen:
+                seen.add(name)
+                ordered.append(name)
+    aligned_sources = [bundle.select_features(ordered) for bundle in sources]
+    aligned_target = target.select_features(ordered)
+    return aligned_sources + [aligned_target], ordered
 
 
 def load_datasets(

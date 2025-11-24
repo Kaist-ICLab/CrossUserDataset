@@ -329,10 +329,10 @@ RESULT_COLUMNS = [
     'split',
     'auroc_lgbm',
     'auroc_vanilla_at_val', 'auroc_vanilla_best',
-    'auroc_cdtrans_at_val', 'auroc_cdtrans_best',
+    'auroc_cdtrans_pretrain', 'auroc_cdtrans_at_val', 'auroc_cdtrans_best',
     'prauc_lgbm',
     'prauc_vanilla_at_val', 'prauc_vanilla_best',
-    'prauc_cdtrans_at_val', 'prauc_cdtrans_best'
+    'prauc_cdtrans_pretrain', 'prauc_cdtrans_at_val', 'prauc_cdtrans_best'
 ]
 
 
@@ -605,8 +605,10 @@ def evaluate_split(split_label: str,
         'auroc_vanilla_best': float('nan'),
         'prauc_vanilla_at_val': float('nan'),
         'prauc_vanilla_best': float('nan'),
+        'auroc_cdtrans_pretrain': float('nan'),
         'auroc_cdtrans_at_val': float('nan'),
         'auroc_cdtrans_best': float('nan'),
+        'prauc_cdtrans_pretrain': float('nan'),
         'prauc_cdtrans_at_val': float('nan'),
         'prauc_cdtrans_best': float('nan')
     }
@@ -777,6 +779,8 @@ def evaluate_split(split_label: str,
     adapt_best_epoch = 0
     pretrain_stopped_early = False
     adapt_stopped_early = False
+    pretrain_val_metrics: Optional[Dict[str, float]] = None
+    pretrain_test_metrics: Optional[Dict[str, float]] = None
     best_val_metrics_adapt: Optional[Dict[str, float]] = None
     best_test_metrics_adapt: Optional[Dict[str, float]] = None
     best_test_metrics_cd_overall: Dict[str, float] = {}
@@ -821,6 +825,19 @@ def evaluate_split(split_label: str,
         if pretrain_best_epoch:
             status = "stopped early" if pretrain_stopped_early else "completed"
             print(f"[CDTrans][Pretrain] {status}; best {monitor_metric.upper()}={pretrain_stopper.best_score:.3f} @ epoch {pretrain_best_epoch}")
+
+    pretrain_val_metrics = eval_cdtrans(model, val_loader, device)
+    pretrain_test_metrics = eval_cdtrans(model, test_loader, device)
+    print("[CDTrans][Pretrain] Best checkpoint evaluation")
+    print_metrics("    Val", pretrain_val_metrics)
+    print_metrics("    Test", pretrain_test_metrics)
+    row['auroc_cdtrans_pretrain'] = round_metric(pretrain_test_metrics['auroc'])
+    row['prauc_cdtrans_pretrain'] = round_metric(pretrain_test_metrics['prauc'])
+    update_best_metrics(best_test_metrics_cd_overall,
+                        {
+                            'auroc': pretrain_test_metrics['auroc'],
+                            'prauc': pretrain_test_metrics['prauc']
+                        })
 
     print("[CDTrans] Adaptation...")
     for epoch in range(1, args.cdtrans_adapt_epochs + 1):
@@ -918,7 +935,9 @@ def evaluate_split(split_label: str,
     summary_entries = [("LightGBM", test_metrics)]
     if final_metrics_vanilla is not None:
         summary_entries.append(("VanillaTransformer", final_metrics_vanilla))
-    summary_entries.append(("CDTrans", final_metrics_cd))
+    if pretrain_test_metrics is not None:
+        summary_entries.append(("CDTrans-Pretrain", pretrain_test_metrics))
+    summary_entries.append(("CDTrans-Adapted", final_metrics_cd))
 
     print()
     print("[Split Summary]")

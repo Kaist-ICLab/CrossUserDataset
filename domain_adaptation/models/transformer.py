@@ -11,7 +11,16 @@ import numpy as np
 import torch
 from torch import nn
 from torch.utils.data import DataLoader, TensorDataset
+from tqdm import tqdm
 
+from .cdtrans import (
+    DEFAULT_PRIORITY_PREFIXES,
+    FeatureBlockTokenizer,
+    FeedForwardBlock,
+    LayerNormalization,
+    MultiHeadAttention,
+    ResidualConnection,
+)
 from .common import ArrayDataset, safe_accuracy, safe_auc, safe_auprc
 
 
@@ -22,8 +31,15 @@ class TransformerConfig:
     n_heads: int = 4
     num_layers: int = 2
     dropout: float = 0.1
-    pretrain_epochs: int = 15
-    finetune_epochs: int = 10
+    feature_names: Optional[Tuple[str, ...]] = None
+    max_block_size: int = 128
+    block_grouping: str = "prefix_slot"
+    attention_type: str = "linear"
+    linear_attn_features: int = 64
+    priority_prefixes: Tuple[str, ...] = DEFAULT_PRIORITY_PREFIXES
+    pretrain_epochs: int = 300
+    # pretrain_epochs: int = 15
+    finetune_epochs: int = 50
     adapt_epochs: int = 5
     batch_size: int = 256
     pretrain_lr: float = 1e-3
@@ -32,6 +48,12 @@ class TransformerConfig:
     weight_decay: float = 1e-4
     grad_clip: float = 1.0
     device: Optional[str] = None
+    use_cosine_scheduler: bool = False
+    cosine_min_lr: float = 1e-5
+    use_plateau_scheduler: bool = False
+    plateau_factor: float = 0.5
+    plateau_patience: int = 10
+    warmup_epochs: int = 0
 
 
 @dataclass
@@ -59,36 +81,74 @@ def _seed_everything(seed: int) -> None:
     torch.cuda.manual_seed_all(seed)
 
 
+def _fmt_metric(value: float) -> str:
+    if value is None or np.isnan(value):
+        return "nan"
+    return f"{value:.3f}"
+
+
+class TransformerBlock(nn.Module):
+    def __init__(
+        self,
+        d_model: int,
+        n_heads: int,
+        dropout: float,
+        attention_type: str,
+        linear_attn_features: int,
+    ):
+        super().__init__()
+        self.mha = MultiHeadAttention(
+            d_model,
+            n_heads,
+            dropout,
+            attention_type=attention_type,
+            nb_features=linear_attn_features,
+        )
+        self.residual1 = ResidualConnection(dropout)
+        self.residual2 = ResidualConnection(dropout)
+        self.ff = FeedForwardBlock(d_model, d_ff=4 * d_model, dropout=dropout)
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        x = self.residual1(x, lambda t: self.mha(t, t, t))
+        x = self.residual2(x, self.ff)
+        return x
+
+
 class FeatureTransformer(nn.Module):
     def __init__(self, input_dim: int, config: TransformerConfig):
         super().__init__()
         self.input_dim = input_dim
-        self.value_proj = nn.Linear(1, config.d_model)
-        self.position_embedding = nn.Embedding(input_dim, config.d_model)
-        encoder_layer = nn.TransformerEncoderLayer(
-            d_model=config.d_model,
-            nhead=config.n_heads,
-            dim_feedforward=config.d_model * 4,
-            dropout=config.dropout,
-            activation="gelu",
-            batch_first=True,
+        self.tokenizer = FeatureBlockTokenizer(
+            input_dim,
+            config.d_model,
+            feature_names=config.feature_names,
+            max_block_size=config.max_block_size,
+            grouping=config.block_grouping,
+            priority_prefixes=config.priority_prefixes,
         )
-        self.encoder = nn.TransformerEncoder(encoder_layer, num_layers=config.num_layers)
         self.cls_token = nn.Parameter(torch.randn(1, 1, config.d_model))
-        self.norm = nn.LayerNorm(config.d_model)
+        self.layers = nn.ModuleList([
+            TransformerBlock(
+                config.d_model,
+                config.n_heads,
+                config.dropout,
+                config.attention_type,
+                config.linear_attn_features,
+            )
+            for _ in range(config.num_layers)
+        ])
+        self.norm = LayerNormalization()
         self.dropout = nn.Dropout(config.dropout)
         self.head = nn.Linear(config.d_model, 1)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         batch = x.size(0)
-        seq = x.unsqueeze(-1)  # (batch, features, 1)
-        token_embeddings = self.value_proj(seq)
-        positions = torch.arange(self.input_dim, device=x.device)
-        token_embeddings = token_embeddings + self.position_embedding(positions)[None, :, :]
+        tokens = self.tokenizer(x)
         cls_tokens = self.cls_token.expand(batch, -1, -1)
-        tokens = torch.cat([cls_tokens, token_embeddings], dim=1)
-        encoded = self.encoder(tokens)
-        cls_output = self.norm(encoded[:, 0, :])
+        h = torch.cat([cls_tokens, tokens], dim=1)
+        for layer in self.layers:
+            h = layer(h)
+        cls_output = self.norm(h[:, 0, :])
         logits = self.head(self.dropout(cls_output)).squeeze(-1)
         return logits
 
@@ -135,27 +195,72 @@ class TransformerPipeline:
             return float("inf")
         return total_loss / total_count
 
+    def _evaluate_metrics(self, model: FeatureTransformer, dataset: Optional[ArrayDataset]) -> Dict[str, float]:
+        if dataset is None or dataset.X.size == 0:
+            return {"auroc": float("nan"), "accuracy": float("nan"), "auprc": float("nan")}
+        preds = self._predict(model, dataset)
+        return {
+            "auroc": safe_auc(dataset.y, preds),
+            "accuracy": safe_accuracy(dataset.y, preds),
+            "auprc": safe_auprc(dataset.y, preds),
+        }
+
     def _train_stage(
         self,
         model: FeatureTransformer,
         dataset: ArrayDataset,
         epochs: int,
         lr: float,
+        stage_name: str,
         *,
         val_dataset: Optional[ArrayDataset] = None,
     ) -> Tuple[float, int]:
         if epochs <= 0 or dataset.X.size == 0:
             return 0.0, 0
         optimizer = torch.optim.Adam(model.parameters(), lr=lr, weight_decay=self.config.weight_decay)
+        scheduler = None
+        cosine_epochs = max(1, epochs - max(0, self.config.warmup_epochs))
+        if self.config.use_cosine_scheduler:
+            scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(
+                optimizer,
+                T_max=cosine_epochs,
+                eta_min=self.config.cosine_min_lr,
+            )
+        elif self.config.use_plateau_scheduler:
+            scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
+                optimizer,
+                mode="min",
+                factor=self.config.plateau_factor,
+                patience=max(1, self.config.plateau_patience),
+                min_lr=self.config.cosine_min_lr,
+            )
         loader = self._make_loader(dataset, shuffle=True)
         model.train()
         start = perf_counter()
         epoch_counter = 0
         best_state: Optional[Dict[str, torch.Tensor]] = None
         best_loss = float("inf")
-        patience = max(1, epochs // 4) if val_dataset is not None and val_dataset.X.size > 0 else None
+        # patience = max(1, epochs // 4) if val_dataset is not None and val_dataset.X.size > 0 else None
+        patience = None
         epochs_without_improvement = 0
-        for _ in range(epochs):
+        iterator = tqdm(
+            range(1, epochs + 1),
+            desc=f"[Transformer][{stage_name}]",
+            leave=False,
+            dynamic_ncols=True,
+            disable=False,
+        )
+        for epoch in iterator:
+            if self.config.warmup_epochs and epoch <= self.config.warmup_epochs:
+                warmup_scale = max(1e-3, epoch / float(self.config.warmup_epochs))
+                effective_lr = lr * warmup_scale
+                for param_group in optimizer.param_groups:
+                    param_group["lr"] = effective_lr
+            elif scheduler is None:
+                for param_group in optimizer.param_groups:
+                    param_group["lr"] = lr
+            epoch_loss = 0.0
+            sample_count = 0
             for xb, yb in loader:
                 xb = xb.to(self.device)
                 yb = yb.to(self.device)
@@ -166,6 +271,8 @@ class TransformerPipeline:
                 if self.config.grad_clip:
                     torch.nn.utils.clip_grad_norm_(model.parameters(), self.config.grad_clip)
                 optimizer.step()
+                epoch_loss += loss.item() * xb.size(0)
+                sample_count += xb.size(0)
             epoch_counter += 1
             if val_dataset is not None and val_dataset.X.size > 0:
                 val_loss = self._evaluate_loss(model, val_dataset)
@@ -177,6 +284,24 @@ class TransformerPipeline:
                     epochs_without_improvement += 1
                     if patience is not None and epochs_without_improvement >= patience:
                         break
+                val_metrics = self._evaluate_metrics(model, val_dataset)
+            else:
+                val_metrics = {"auroc": float("nan"), "accuracy": float("nan"), "auprc": float("nan")}
+            train_metrics = self._evaluate_metrics(model, dataset)
+            avg_loss = epoch_loss / sample_count if sample_count else float("nan")
+            iterator.set_postfix({
+                "epoch": epoch,
+                "loss": f"{avg_loss:.4f}" if not np.isnan(avg_loss) else "nan",
+                "train_auc": _fmt_metric(train_metrics["auroc"]),
+                "val_auc": _fmt_metric(val_metrics["auroc"]),
+            })
+            if scheduler is not None:
+                if isinstance(scheduler, torch.optim.lr_scheduler.ReduceLROnPlateau):
+                    monitor = val_loss if val_dataset is not None and val_dataset.X.size > 0 else avg_loss
+                    scheduler.step(monitor if monitor is not None else avg_loss)
+                else:
+                    if not (self.config.warmup_epochs and epoch < self.config.warmup_epochs):
+                        scheduler.step()
         elapsed = perf_counter() - start
         if best_state is not None:
             model.load_state_dict(best_state)
@@ -221,6 +346,7 @@ class TransformerPipeline:
                 pretrain,
                 self.config.pretrain_epochs,
                 self.config.pretrain_lr,
+                stage_name="Pretrain",
                 val_dataset=pretrain_val,
             )
             stage_durations["pretrain_seconds"] = duration
@@ -236,6 +362,7 @@ class TransformerPipeline:
             train,
             self.config.finetune_epochs,
             self.config.finetune_lr,
+            stage_name="Finetune",
             val_dataset=val,
         )
         stage_durations["finetune_seconds"] = duration
@@ -247,6 +374,7 @@ class TransformerPipeline:
                 adapt,
                 self.config.adapt_epochs,
                 self.config.adapt_lr,
+                stage_name="Adapt",
                 val_dataset=val,
             )
             stage_durations["adapt_seconds"] = duration
