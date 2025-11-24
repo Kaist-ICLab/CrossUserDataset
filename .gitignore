@@ -22,6 +22,9 @@ results/
 selected_users_dataset/
 *.pkl
 *.npy
+*.csv
+*.xls
+*.xlsx
 data/
 
 # OS junk
@@ -31,3 +34,4 @@ Thumbs.db
 # Editor swap files
 *.swp
 *.swo
+.*
