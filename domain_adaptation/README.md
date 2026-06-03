@@ -127,4 +127,4 @@ Dependencies are pinned in the repo root [`requirements.txt`](../requirements.tx
 
 ## Outputs
 
-Summary tables aggregated from runs are written to [`../benchmark/results/tier_b_dg.csv`](../benchmark/results/), [`../benchmark/results/tier_b_da.csv`](../benchmark/results/), [`../benchmark/results/tier_c_dg.csv`](../benchmark/results/), [`../benchmark/results/tier_c_da.csv`](../benchmark/results/) using the output contract in [`../benchmark/utils/README.md`](../benchmark/utils/README.md). (CSV filenames retain their original `tier_*.csv` naming.)
+Summary tables aggregated from runs are written to [`../benchmark/results/setting_b_dg.csv`](../benchmark/results/setting_b_dg.csv), [`../benchmark/results/setting_b_da.csv`](../benchmark/results/setting_b_da.csv), [`../benchmark/results/setting_c_dg.csv`](../benchmark/results/setting_c_dg.csv), and [`../benchmark/results/setting_c_da.csv`](../benchmark/results/setting_c_da.csv) using the output contract in [`../benchmark/utils/README.md`](../benchmark/utils/README.md).

@@ -61,11 +61,25 @@ All metrics are computed on the setting-specific test set. Model selection uses 
 
 ## Output contract
 
-Each setting writes one row per (wave | source, target | model | task) tuple with columns:
+Aggregated leaderboard CSVs live in [`../results/`](../results/). The schema is per-setting:
 
-```
-tier, wave_or_source, target, task, model, family, n_train, n_val, n_test,
- acc, macro_f1, precision, recall, auroc, auroc_std, n_features_after_alignment
-```
+- Setting A / Setting B (single wave):
 
-Rows are aggregated into `benchmark/results/*.csv` for leaderboard rendering.
+  ```
+  setting, wave, task, model, family, auroc, auroc_std, acc, macro_f1
+  ```
+
+- Setting B category-best (best model per family):
+
+  ```
+  setting, wave, task, family, best_model, auroc, auroc_std, acc, macro_f1
+  ```
+
+- Setting C (cross-wave, with feature alignment):
+
+  ```
+  setting, source, target, task, model, family,
+  n_features_after_alignment, auroc, auroc_std, acc, macro_f1
+  ```
+
+See [`../results/README.md`](../results/README.md) for the per-column type spec and which files map to which setting.
