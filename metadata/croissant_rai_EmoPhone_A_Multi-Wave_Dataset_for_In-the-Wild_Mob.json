@@ -1,0 +1,3457 @@
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "citeAs": "cr:citeAs",
+    "column": "cr:column",
+    "conformsTo": "dct:conformsTo",
+    "cr": "http://mlcommons.org/croissant/",
+    "rai": "http://mlcommons.org/croissant/RAI/",
+    "data": {
+      "@id": "cr:data",
+      "@type": "@json"
+    },
+    "dataType": {
+      "@id": "cr:dataType",
+      "@type": "@vocab"
+    },
+    "dct": "http://purl.org/dc/terms/",
+    "examples": {
+      "@id": "cr:examples",
+      "@type": "@json"
+    },
+    "extract": "cr:extract",
+    "field": "cr:field",
+    "fileProperty": "cr:fileProperty",
+    "fileObject": "cr:fileObject",
+    "fileSet": "cr:fileSet",
+    "format": "cr:format",
+    "includes": "cr:includes",
+    "isLiveDataset": "cr:isLiveDataset",
+    "jsonPath": "cr:jsonPath",
+    "key": "cr:key",
+    "md5": "cr:md5",
+    "parentField": "cr:parentField",
+    "path": "cr:path",
+    "recordSet": "cr:recordSet",
+    "references": "cr:references",
+    "regex": "cr:regex",
+    "repeated": "cr:repeated",
+    "replace": "cr:replace",
+    "sc": "https://schema.org/",
+    "separator": "cr:separator",
+    "source": "cr:source",
+    "subField": "cr:subField",
+    "transform": "cr:transform",
+    "wd": "https://www.wikidata.org/wiki/",
+    "prov": "http://www.w3.org/ns/prov#"
+  },
+  "@type": "sc:Dataset",
+  "conformsTo": "http://mlcommons.org/croissant/1.0",
+  "name": "EmoPhone: A Multi-Wave Dataset for In-the-Wild Mobile and Wearable Affect Sensing",
+  "url": "https://doi.org/10.7910/DVN/QGRVU8",
+  "creator": [
+    {
+      "@type": "Person",
+      "givenName": "Panyu",
+      "familyName": "Zhang",
+      "sameAs": "https://orcid.org/0000-0002-7014-6940",
+      "@id": "https://orcid.org/0000-0002-7014-6940",
+      "identifier": "https://orcid.org/0000-0002-7014-6940",
+      "name": "Zhang, Panyu"
+    },
+    {
+      "@type": "Person",
+      "givenName": "minseo",
+      "familyName": "park",
+      "sameAs": "https://orcid.org/0009-0002-8612-1219",
+      "@id": "https://orcid.org/0009-0002-8612-1219",
+      "identifier": "https://orcid.org/0009-0002-8612-1219",
+      "name": "park, minseo"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Soowon",
+      "familyName": "Kang",
+      "sameAs": "https://orcid.org/0000-0003-1343-2083",
+      "@id": "https://orcid.org/0000-0003-1343-2083",
+      "identifier": "https://orcid.org/0000-0003-1343-2083",
+      "name": "Kang, Soowon"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Tomiris",
+      "familyName": "Ismatzoda",
+      "sameAs": "https://orcid.org/0009-0003-7695-8872",
+      "@id": "https://orcid.org/0009-0003-7695-8872",
+      "identifier": "https://orcid.org/0009-0003-7695-8872",
+      "name": "Ismatzoda, Tomiris"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Azizbek",
+      "familyName": "Mustafakulov",
+      "sameAs": "https://orcid.org/0009-0004-8872-6259",
+      "@id": "https://orcid.org/0009-0004-8872-6259",
+      "identifier": "https://orcid.org/0009-0004-8872-6259",
+      "name": "Mustafakulov, Azizbek"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Otabek",
+      "familyName": "Najimov",
+      "sameAs": "https://orcid.org/0009-0005-4597-7637",
+      "@id": "https://orcid.org/0009-0005-4597-7637",
+      "identifier": "https://orcid.org/0009-0005-4597-7637",
+      "name": "Najimov, Otabek"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Woohyeok",
+      "familyName": "Choi",
+      "sameAs": "https://orcid.org/0000-0002-7336-8653",
+      "@id": "https://orcid.org/0000-0002-7336-8653",
+      "identifier": "https://orcid.org/0000-0002-7336-8653",
+      "name": "Choi, Woohyeok"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Jumabek",
+      "familyName": "Alikhanov",
+      "sameAs": "https://orcid.org/0000-0003-3103-6033",
+      "@id": "https://orcid.org/0000-0003-3103-6033",
+      "identifier": "https://orcid.org/0000-0003-3103-6033",
+      "name": "Alikhanov, Jumabek"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Surjya",
+      "familyName": "Ghosh",
+      "sameAs": "https://orcid.org/0000-0002-0226-0733",
+      "@id": "https://orcid.org/0000-0002-0226-0733",
+      "identifier": "https://orcid.org/0000-0002-0226-0733",
+      "name": "Ghosh, Surjya"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Uichin",
+      "familyName": "Lee",
+      "sameAs": "https://orcid.org/0000-0002-1888-1569",
+      "@id": "https://orcid.org/0000-0002-1888-1569",
+      "identifier": "https://orcid.org/0000-0002-1888-1569",
+      "name": "Lee, Uichin"
+    }
+  ],
+  "description": "This repository releases the raw data for D1, D2, and D3, three consecutive annual datasets collected as part of an in-the-wild affective sensing study from 2020 to 2022. Each dataset combines passive sensing from participants’ own Android smartphones and Fitbit wearables with dense in-situ affective state labels collected via the Experience Sampling Method (ESM). In total, the repository contains 53,139 ESM responses from 297 participants after quality control (328 participants recruited overall), captured in naturalistic daily-life settings. The dataset is intended to support research on moment-level affect prediction (e.g., valence, arousal, stress, and disturbance), personalized and cross-person generalization, cross-dataset transfer learning, and longitudinal analyses of behavioral and affective variability in mobile affective computing.",
+  "keywords": [
+    "Computer and Information Science"
+  ],
+  "license": "http://creativecommons.org/licenses/by/4.0",
+  "datePublished": "2026-05-03",
+  "dateModified": "2026-05-03",
+  "includedInDataCatalog": {
+    "@type": "DataCatalog",
+    "name": "Harvard Dataverse",
+    "url": "https://dataverse.harvard.edu"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Harvard Dataverse"
+  },
+  "version": "1.0",
+  "citeAs": "@data{DVN/QGRVU8_2026,author = {Zhang, Panyu and park, minseo and Kang, Soowon and Ismatzoda, Tomiris and Mustafakulov, Azizbek and Najimov, Otabek and Choi, Woohyeok and Alikhanov, Jumabek and Ghosh, Surjya and Lee, Uichin},publisher = {Harvard Dataverse},title = {EmoPhone: A Multi-Wave Mobile and Wearable Dataset for In-the-Wild Affect Sensing},year = {2026},url = {https://doi.org/10.7910/DVN/QGRVU8}}",
+  "distribution": [
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/EsmResponse.csv",
+      "name": "EsmResponse.csv",
+      "encodingFormat": "text/comma-separated-values",
+      "md5": "f0f56b946db55b8ac4bdf3fb4821ed60",
+      "contentSize": "708496",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766498"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/UserInfo.csv",
+      "name": "UserInfo.csv",
+      "encodingFormat": "text/comma-separated-values",
+      "md5": "f51f6787615025e1ce81f7c0541db915",
+      "contentSize": "9510",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766428"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P033.tar.gz",
+      "name": "D1_Sensor_P033.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "8e0b174665762f1d26e8a36cc8a5cbe5",
+      "contentSize": "17139443",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766507"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P035.tar.gz",
+      "name": "D1_Sensor_P035.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "fad4d05a164a8aad4528b3685258bb4a",
+      "contentSize": "14467566",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766635"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P036.tar.gz",
+      "name": "D1_Sensor_P036.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "b7d5df7d79e393fef549550c28d92973",
+      "contentSize": "12672858",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766546"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P037.tar.gz",
+      "name": "D1_Sensor_P037.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "5ba71053460b9eda5f6782e4f236723a",
+      "contentSize": "26134178",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766575"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P038.tar.gz",
+      "name": "D1_Sensor_P038.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "718d952b776704ee9ded2ee57c37091d",
+      "contentSize": "7061314",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766414"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P039.tar.gz",
+      "name": "D1_Sensor_P039.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "f452bae1034c70152f65289bfb5ce5aa",
+      "contentSize": "19265620",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766468"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P040.tar.gz",
+      "name": "D1_Sensor_P040.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "5b1f9988cd435dd08943121491cf43cf",
+      "contentSize": "26838257",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766656"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P041.tar.gz",
+      "name": "D1_Sensor_P041.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "b7cb36c5ad7e1df8a9dd9fc899fa3d8b",
+      "contentSize": "18856533",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766388"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P042.tar.gz",
+      "name": "D1_Sensor_P042.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "5dea15ba8f6b1daf4200bac034823be2",
+      "contentSize": "22947616",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766429"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P043.tar.gz",
+      "name": "D1_Sensor_P043.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "2af0797c899cc4c2036fc90a257e1c62",
+      "contentSize": "7845770",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766566"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P044.tar.gz",
+      "name": "D1_Sensor_P044.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "476cece062ffd9c7ba3ae6a54f1a640c",
+      "contentSize": "36480335",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766419"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P045.tar.gz",
+      "name": "D1_Sensor_P045.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "94d5433bc6725c790197360490e4ff15",
+      "contentSize": "17041936",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766492"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P046.tar.gz",
+      "name": "D1_Sensor_P046.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "4dfe7730b8755e1b0aaf0e028bf2b0b4",
+      "contentSize": "19810217",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766622"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P047.tar.gz",
+      "name": "D1_Sensor_P047.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "e1713d58af91125173b0075fd2262575",
+      "contentSize": "26491945",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766478"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P048.tar.gz",
+      "name": "D1_Sensor_P048.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "0e887e9039b3b7e06942e12ded217ffb",
+      "contentSize": "2690097",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766499"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P049.tar.gz",
+      "name": "D1_Sensor_P049.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "6ef42edcb761d6e3ad56af25bb261088",
+      "contentSize": "2349514",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766634"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P050.tar.gz",
+      "name": "D1_Sensor_P050.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "fbf5570d6fa5cc4558cbc702416ea16f",
+      "contentSize": "32253178",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766573"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P051.tar.gz",
+      "name": "D1_Sensor_P051.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "b27ee6237481ca627fa2f14196c35d6b",
+      "contentSize": "16564054",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766700"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P052.tar.gz",
+      "name": "D1_Sensor_P052.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "dd0ca1ead7c92079c51c5e9058cd594b",
+      "contentSize": "14653565",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766430"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P053.tar.gz",
+      "name": "D1_Sensor_P053.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "74f611aec1602b0fb7577260c4b138ff",
+      "contentSize": "19683541",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766578"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P054.tar.gz",
+      "name": "D1_Sensor_P054.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "36d4e813b8d3384ead93dfdd0e45434f",
+      "contentSize": "10254088",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766448"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P055.tar.gz",
+      "name": "D1_Sensor_P055.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "521bfb69e7e8c773be8b6820e4da46e8",
+      "contentSize": "11301868",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766583"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P056.tar.gz",
+      "name": "D1_Sensor_P056.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "3a4ad9f37055aa07a790b7865a537295",
+      "contentSize": "38919677",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766412"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P058.tar.gz",
+      "name": "D1_Sensor_P058.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "9a709a916f11cbdc01c8386338882154",
+      "contentSize": "13640625",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766668"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P059.tar.gz",
+      "name": "D1_Sensor_P059.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "917faa45720aecab3606f8467d5696f0",
+      "contentSize": "12764560",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766681"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P060.tar.gz",
+      "name": "D1_Sensor_P060.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "36701f9d5be917e09950e49be7293939",
+      "contentSize": "32461577",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766601"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P061.tar.gz",
+      "name": "D1_Sensor_P061.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "8b676d52f473d1f0c764ac05610dca1a",
+      "contentSize": "9781200",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766399"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P062.tar.gz",
+      "name": "D1_Sensor_P062.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "6c78b074070f1d5ee51f9a3a0519ac8c",
+      "contentSize": "13594240",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766535"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P063.tar.gz",
+      "name": "D1_Sensor_P063.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "ab2eba51e56e0e744ea696eaf07380f2",
+      "contentSize": "10345529",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766682"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P064.tar.gz",
+      "name": "D1_Sensor_P064.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "06a40fe49460ce43644dba4a4c629723",
+      "contentSize": "30969371",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766570"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P065.tar.gz",
+      "name": "D1_Sensor_P065.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "02c35838dad2ae044f29a1604933757e",
+      "contentSize": "12797127",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766664"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P066.tar.gz",
+      "name": "D1_Sensor_P066.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "dc5e3c9f33143598dfb956eb0ce1342b",
+      "contentSize": "18011682",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766543"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P067.tar.gz",
+      "name": "D1_Sensor_P067.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "83b52fc1a0a1d821970d4666b60631bf",
+      "contentSize": "8501649",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766458"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P068.tar.gz",
+      "name": "D1_Sensor_P068.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "cfbe85cebd9bd0722a09e1d1a2d0bbac",
+      "contentSize": "14683871",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766418"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P069.tar.gz",
+      "name": "D1_Sensor_P069.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "a9073fed4f3749fc196bf8c48862057f",
+      "contentSize": "64027747",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766491"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P070.tar.gz",
+      "name": "D1_Sensor_P070.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "62393f36a28628a6f56ce22476bd9fb4",
+      "contentSize": "13247169",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766585"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P071.tar.gz",
+      "name": "D1_Sensor_P071.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "c111102e0aed490f64675da6a7464e56",
+      "contentSize": "13191014",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766586"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P072.tar.gz",
+      "name": "D1_Sensor_P072.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "982050b759269279154e698f8aaa2950",
+      "contentSize": "47228275",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766568"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P073.tar.gz",
+      "name": "D1_Sensor_P073.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "cc032e40d83f2a5d0b5aca0eac60d965",
+      "contentSize": "12157403",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766519"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P074.tar.gz",
+      "name": "D1_Sensor_P074.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "2f32ee7d2c77949dd731210ce8edc965",
+      "contentSize": "10907745",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766502"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P075.tar.gz",
+      "name": "D1_Sensor_P075.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "b7d4d121d95cb4dcbcbb173709bdea57",
+      "contentSize": "10282433",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766469"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P076.tar.gz",
+      "name": "D1_Sensor_P076.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "e24f12a86b99b4b80b9f2407dee6dc67",
+      "contentSize": "17297502",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766552"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P077.tar.gz",
+      "name": "D1_Sensor_P077.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "26c29173be9604cd63246150cf52a2b2",
+      "contentSize": "38020437",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766489"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P078.tar.gz",
+      "name": "D1_Sensor_P078.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "382170f2539e966468a81e37f51adb95",
+      "contentSize": "5485076",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766524"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P079.tar.gz",
+      "name": "D1_Sensor_P079.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "72d2dee2e8e726091e9f7ddd8e01b55b",
+      "contentSize": "8449423",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766439"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P080.tar.gz",
+      "name": "D1_Sensor_P080.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "8c14612708bc9c454174b9bcab20a780",
+      "contentSize": "23704382",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766702"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P081.tar.gz",
+      "name": "D1_Sensor_P081.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "b26ab0cea9e0751bc9227a85947758f6",
+      "contentSize": "61755468",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766562"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P082.tar.gz",
+      "name": "D1_Sensor_P082.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "4da361e15d5ae3c2b6bfb254b61e247a",
+      "contentSize": "14058813",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766584"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P083.tar.gz",
+      "name": "D1_Sensor_P083.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "8fa32d495bd73d0cd8b0a8cda8a03429",
+      "contentSize": "36078613",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766473"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P084.tar.gz",
+      "name": "D1_Sensor_P084.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "c67528ce91c7f3d82badd3df3d7f19b8",
+      "contentSize": "13406787",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766420"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P085.tar.gz",
+      "name": "D1_Sensor_P085.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "0485546a6537df21644777dc95466ab6",
+      "contentSize": "18300589",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766481"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P086.tar.gz",
+      "name": "D1_Sensor_P086.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "ef435d844f7f2949cd586e2e8238a6d1",
+      "contentSize": "6220655",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766539"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P087.tar.gz",
+      "name": "D1_Sensor_P087.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "9ab1f56ebdac8dba540dc49693d9369e",
+      "contentSize": "21652259",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766605"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P088.tar.gz",
+      "name": "D1_Sensor_P088.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "e146b2c0157e19788614c5107e5a8450",
+      "contentSize": "65430976",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766637"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P089.tar.gz",
+      "name": "D1_Sensor_P089.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "2912e4cb12f29fbb0861404b8864dedb",
+      "contentSize": "16306794",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766508"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P090.tar.gz",
+      "name": "D1_Sensor_P090.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "c4c35e2b406293636030fbe1f713a829",
+      "contentSize": "10141679",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766672"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P091.tar.gz",
+      "name": "D1_Sensor_P091.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "878e487c8ea28bf7a71f49900a59109e",
+      "contentSize": "15977145",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766436"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P092.tar.gz",
+      "name": "D1_Sensor_P092.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "ba3f26bff04885e59130f83452a8ba3e",
+      "contentSize": "56025767",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766652"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P093.tar.gz",
+      "name": "D1_Sensor_P093.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "c4828f5ba7837e202d7f7a51648bb291",
+      "contentSize": "20393026",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766485"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P094.tar.gz",
+      "name": "D1_Sensor_P094.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "f7a03564c5ad529da36146549ed9c5ed",
+      "contentSize": "14264124",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766405"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P095.tar.gz",
+      "name": "D1_Sensor_P095.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "49994f66896950e26bc82994f07e0c8d",
+      "contentSize": "9769943",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766683"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P096.tar.gz",
+      "name": "D1_Sensor_P096.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "8a75c54be0b5a1b2e50cf863e44e7012",
+      "contentSize": "11714513",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766520"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P097.tar.gz",
+      "name": "D1_Sensor_P097.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "6ac42c851576f39d9ddd0980b9fd0911",
+      "contentSize": "25862632",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766640"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P098.tar.gz",
+      "name": "D1_Sensor_P098.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "187467fbeca7f9c28b45360693ec539c",
+      "contentSize": "13421326",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766493"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P099.tar.gz",
+      "name": "D1_Sensor_P099.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "1aa039fdca89040d8770733f3111d1d9",
+      "contentSize": "16721527",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766400"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P100.tar.gz",
+      "name": "D1_Sensor_P100.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "28a6ee8c1cf85291fea7717dfb4bc09d",
+      "contentSize": "12191343",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766494"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P101.tar.gz",
+      "name": "D1_Sensor_P101.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "2648ba3202b1a64032c86c215c3266b3",
+      "contentSize": "36946397",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766466"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P102.tar.gz",
+      "name": "D1_Sensor_P102.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "355cc97b757bcc787f8f6dda50608202",
+      "contentSize": "13372023",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766558"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P103.tar.gz",
+      "name": "D1_Sensor_P103.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "f43dd18c084014dc099e9d8bce738165",
+      "contentSize": "21693917",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766565"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P104.tar.gz",
+      "name": "D1_Sensor_P104.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "6c6c07a901f4c30724c1de03e555723c",
+      "contentSize": "8344301",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766620"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P105.tar.gz",
+      "name": "D1_Sensor_P105.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "2541969a81d4fc6aa48d9b3119ca833f",
+      "contentSize": "17408887",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766617"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P106.tar.gz",
+      "name": "D1_Sensor_P106.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "53667576b4d6e7e45dfe6ca79d2270d3",
+      "contentSize": "37637761",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766559"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P107.tar.gz",
+      "name": "D1_Sensor_P107.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "df4091a406570af15bb603f1825ff9cf",
+      "contentSize": "12732814",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766545"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P108.tar.gz",
+      "name": "D1_Sensor_P108.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "07d32e80ffcf94170fdf9bf61e761976",
+      "contentSize": "37296292",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766490"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P109.tar.gz",
+      "name": "D1_Sensor_P109.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "b3e3d4aa6ce41bcdaafef5772af0c6e1",
+      "contentSize": "10837017",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766440"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P110.tar.gz",
+      "name": "D1_Sensor_P110.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "16126d65098ef9144d026c0cd45a921a",
+      "contentSize": "14461696",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766673"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P111.tar.gz",
+      "name": "D1_Sensor_P111.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "5f7601983b20099a63a8a276a0df1c7d",
+      "contentSize": "16327755",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766680"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P112.tar.gz",
+      "name": "D1_Sensor_P112.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "cab009d8589c324797f40d892f34ce29",
+      "contentSize": "17856740",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766690"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P113.tar.gz",
+      "name": "D1_Sensor_P113.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "7c6ca7962c0e2bb79f8ca200dd9cb33c",
+      "contentSize": "19616590",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766553"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P114.tar.gz",
+      "name": "D1_Sensor_P114.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "f0930c46d9659acef94304e22199fb53",
+      "contentSize": "20615462",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766561"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P115.tar.gz",
+      "name": "D1_Sensor_P115.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "7e8d563db05497464196f36d252ab942",
+      "contentSize": "16433425",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766580"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P116.tar.gz",
+      "name": "D1_Sensor_P116.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "d6eab7ef70c2f67a371fbf4e54e8e805",
+      "contentSize": "9405205",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766477"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P117.tar.gz",
+      "name": "D1_Sensor_P117.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "e01007640fe104f5e454c3bccbc4333e",
+      "contentSize": "20332697",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766506"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P119.tar.gz",
+      "name": "D1_Sensor_P119.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "541169045f74582a1db1cc0814b79e9b",
+      "contentSize": "25920801",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766472"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P120.tar.gz",
+      "name": "D1_Sensor_P120.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "37f6cedbac63a46bae08c81d6127ef2c",
+      "contentSize": "14369063",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766557"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P121.tar.gz",
+      "name": "D1_Sensor_P121.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "75048b97a4dc6c5833084ef81853afe4",
+      "contentSize": "17840445",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766484"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P122.tar.gz",
+      "name": "D1_Sensor_P122.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "85ec7e79e25eb0437f8497d5e7288385",
+      "contentSize": "12171226",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766503"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P123.tar.gz",
+      "name": "D1_Sensor_P123.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "6a09fd12770920ad35fcd4fb56533571",
+      "contentSize": "12557416",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766618"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P124.tar.gz",
+      "name": "D1_Sensor_P124.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "3ba3ee1044ae8b8f4ddce6a302afe57b",
+      "contentSize": "6921031",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766555"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P125.tar.gz",
+      "name": "D1_Sensor_P125.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "ca1ee392720e90c74ee96cfb94d62403",
+      "contentSize": "5284757",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766650"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P126.tar.gz",
+      "name": "D1_Sensor_P126.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "675d20fa4ba48158e5cb0407b1e0ca23",
+      "contentSize": "16395800",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766705"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P127.tar.gz",
+      "name": "D1_Sensor_P127.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "fa77d143a97ab6fb30a0147f327adef2",
+      "contentSize": "59547418",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766525"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P128.tar.gz",
+      "name": "D1_Sensor_P128.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "ef28c4197ddba17a141bb81c853644ff",
+      "contentSize": "28507709",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766465"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P129.tar.gz",
+      "name": "D1_Sensor_P129.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "46f7952afb54bbc714ca08e5f35892dc",
+      "contentSize": "43205612",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766657"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P130.tar.gz",
+      "name": "D1_Sensor_P130.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "4e2788e1b7b24350982455004d810166",
+      "contentSize": "13724384",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766554"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P131.tar.gz",
+      "name": "D1_Sensor_P131.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "24be6fc016fa1b9a2eb053097076b6b7",
+      "contentSize": "11794548",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766432"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P132.tar.gz",
+      "name": "D1_Sensor_P132.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "e38d7cf78a15e33ed241dc87406bec9e",
+      "contentSize": "2590171",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766451"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P133.tar.gz",
+      "name": "D1_Sensor_P133.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "31d1a8250c5b99c81ae64bdb8bebc03a",
+      "contentSize": "34024693",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766693"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P135.tar.gz",
+      "name": "D1_Sensor_P135.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "b8d8294f3e915c4ecc40595e2da5c59d",
+      "contentSize": "29833495",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766398"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P136.tar.gz",
+      "name": "D1_Sensor_P136.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "6c048344d68e230354df4ec394660715",
+      "contentSize": "13461544",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766549"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P137.tar.gz",
+      "name": "D1_Sensor_P137.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "d51aed1f25374f50b67175095e56baff",
+      "contentSize": "14322557",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766482"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D1/Sensor/D1_Sensor_P138.tar.gz",
+      "name": "D1_Sensor_P138.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "c88ae65a0bdabef1a8fb53849b9303f7",
+      "contentSize": "64571464",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766615"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/EsmResponse.csv",
+      "name": "EsmResponse.csv",
+      "encodingFormat": "text/comma-separated-values",
+      "md5": "537eb6cc674dd6aef3e28ca17fa1e49a",
+      "contentSize": "1809109",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766495"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/UserInfo.csv",
+      "name": "UserInfo.csv",
+      "encodingFormat": "text/comma-separated-values",
+      "md5": "2ed6dd7c96203991b9f813900c328917",
+      "contentSize": "5193",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766638"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P001.tar.gz",
+      "name": "D2_Sensor_P001.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "519a4f1dd506e2d540172025fc331f36",
+      "contentSize": "31878985",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766630"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P002.tar.gz",
+      "name": "D2_Sensor_P002.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "4ee52d281c710f7cb445da063bd57d68",
+      "contentSize": "27993810",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766547"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P003.tar.gz",
+      "name": "D2_Sensor_P003.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "ee3f4823c23f16f60ccd50f8038c8149",
+      "contentSize": "42410590",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766434"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P004.tar.gz",
+      "name": "D2_Sensor_P004.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "976619d735d0f4256434a9925c4cd3f7",
+      "contentSize": "27081389",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766629"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P005.tar.gz",
+      "name": "D2_Sensor_P005.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "efcfd8e6eae246f5c6005150da533d02",
+      "contentSize": "18397960",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766523"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P006.tar.gz",
+      "name": "D2_Sensor_P006.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "3368dea5c725ae0b480ffa62e6d882ea",
+      "contentSize": "22279833",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766632"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P007.tar.gz",
+      "name": "D2_Sensor_P007.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "8d4b62fa035b9b761c0fe2822ee96107",
+      "contentSize": "42505944",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766569"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P008.tar.gz",
+      "name": "D2_Sensor_P008.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "907e802cedd00278d78d4aa581698afb",
+      "contentSize": "24386087",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766447"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P009.tar.gz",
+      "name": "D2_Sensor_P009.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "708529182f456beaf97d2ab5d6c4f7a6",
+      "contentSize": "11352091",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766470"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P010.tar.gz",
+      "name": "D2_Sensor_P010.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "6f171e828f13afe2cad99f76c58a9be4",
+      "contentSize": "52929997",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766456"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P011.tar.gz",
+      "name": "D2_Sensor_P011.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "e0f58ee2db7f24bf9d9267c02e0e6f6e",
+      "contentSize": "43171175",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766421"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P012.tar.gz",
+      "name": "D2_Sensor_P012.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "e38b24b2359e112d23c5119574d620ac",
+      "contentSize": "25854320",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766409"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P013.tar.gz",
+      "name": "D2_Sensor_P013.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "62a5b2b02ee9fa3adb0a494113f07d14",
+      "contentSize": "23260621",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766487"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P015.tar.gz",
+      "name": "D2_Sensor_P015.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "748b36d3ba312e34e0fe42292ce6570d",
+      "contentSize": "21821720",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766590"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P019.tar.gz",
+      "name": "D2_Sensor_P019.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "e66484be1e251e159f2b96571505a0c2",
+      "contentSize": "47530180",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766531"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P020.tar.gz",
+      "name": "D2_Sensor_P020.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "701ee7595d001c3ceb4a626c7c5afbec",
+      "contentSize": "23375384",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766686"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P022.tar.gz",
+      "name": "D2_Sensor_P022.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "b055172623784d4d3b1fae736352a2df",
+      "contentSize": "36043576",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766691"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P023.tar.gz",
+      "name": "D2_Sensor_P023.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "2c3b1da5b99f7daabb830855a7d8afb1",
+      "contentSize": "26455732",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766486"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P024.tar.gz",
+      "name": "D2_Sensor_P024.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "b7e96fe9a7d02b743e8a282fb184f23c",
+      "contentSize": "30008390",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766396"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P025.tar.gz",
+      "name": "D2_Sensor_P025.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "1f4e34914d404ac3753573b484dde2fe",
+      "contentSize": "18389070",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766659"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P026.tar.gz",
+      "name": "D2_Sensor_P026.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "14a37dcd7ee10ad3e3040fb634fc05a4",
+      "contentSize": "29051853",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766407"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P027.tar.gz",
+      "name": "D2_Sensor_P027.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "a8280c37dd5e06deb1338c0107431be5",
+      "contentSize": "24892082",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766695"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P028.tar.gz",
+      "name": "D2_Sensor_P028.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "c608f5a40cd861d4e10c616849871b4d",
+      "contentSize": "50583254",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766596"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P029.tar.gz",
+      "name": "D2_Sensor_P029.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "fc154dda5dba8e4a0ebeee4f3c2a5fd4",
+      "contentSize": "14024321",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766619"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P031.tar.gz",
+      "name": "D2_Sensor_P031.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "3eec594bd8b20f4e70997780e4cb7314",
+      "contentSize": "24892083",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766567"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P032.tar.gz",
+      "name": "D2_Sensor_P032.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "b26acbcc1d8dc3c44310827487d1a739",
+      "contentSize": "9424632",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766600"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P034.tar.gz",
+      "name": "D2_Sensor_P034.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "18a2b909187777879b86a647a068ac70",
+      "contentSize": "5027403",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766661"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P036.tar.gz",
+      "name": "D2_Sensor_P036.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "cfe3aa6a5bfb31637762b5e22118dd68",
+      "contentSize": "18147033",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766431"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P037.tar.gz",
+      "name": "D2_Sensor_P037.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "d650af63cf1e4f6b3fdb17b628d7c2a2",
+      "contentSize": "22623781",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766645"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P039.tar.gz",
+      "name": "D2_Sensor_P039.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "8c021636790e160bad96751531bd816b",
+      "contentSize": "18544090",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766703"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P040.tar.gz",
+      "name": "D2_Sensor_P040.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "061d09128d4b5bd0f51a14ea90737828",
+      "contentSize": "44224253",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766460"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P041.tar.gz",
+      "name": "D2_Sensor_P041.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "9f170df741361e789cf22fc66640fab6",
+      "contentSize": "25106731",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766564"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P042.tar.gz",
+      "name": "D2_Sensor_P042.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "193bcc94bfabf8391553f6814fd044b4",
+      "contentSize": "26695399",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766408"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P043.tar.gz",
+      "name": "D2_Sensor_P043.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "fc22b0688f6d898d5913bfca32eda972",
+      "contentSize": "24068664",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766455"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P044.tar.gz",
+      "name": "D2_Sensor_P044.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "e6b7ea52a8bfa886fe7c3cf23229fcd4",
+      "contentSize": "45679270",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766416"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P045.tar.gz",
+      "name": "D2_Sensor_P045.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "b65540cdaa3b856a888c89de739cfca7",
+      "contentSize": "15118046",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766438"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P046.tar.gz",
+      "name": "D2_Sensor_P046.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "7200407943a0211498c1ef63240ff91f",
+      "contentSize": "43672100",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766467"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P047.tar.gz",
+      "name": "D2_Sensor_P047.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "ae19ba34af68b1d3a2ed2d6675d8aff9",
+      "contentSize": "13798677",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766509"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P048.tar.gz",
+      "name": "D2_Sensor_P048.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "47130a5e5f7b70a06039dc8ff3dec97d",
+      "contentSize": "22996808",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766413"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P049.tar.gz",
+      "name": "D2_Sensor_P049.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "b4b6c17215ed525e9080e9ea2bcd9f15",
+      "contentSize": "19728245",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766579"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P050.tar.gz",
+      "name": "D2_Sensor_P050.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "c314190015c8098be996e8ad39f328eb",
+      "contentSize": "18853819",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766390"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P051.tar.gz",
+      "name": "D2_Sensor_P051.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "03397e90ddba625ce59c5345417ed252",
+      "contentSize": "25082748",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766588"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P052.tar.gz",
+      "name": "D2_Sensor_P052.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "3e6366eb2d6472f90c10e7e8f96324e9",
+      "contentSize": "36613292",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766383"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P054.tar.gz",
+      "name": "D2_Sensor_P054.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "df56735087d4e2209e8a2503c4facde4",
+      "contentSize": "21777292",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766517"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P055.tar.gz",
+      "name": "D2_Sensor_P055.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "d9535589f9c49312f8933922f1f25cae",
+      "contentSize": "20681697",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766415"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P056.tar.gz",
+      "name": "D2_Sensor_P056.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "39e22ac30ab999b33504f25af87c4774",
+      "contentSize": "29780604",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766593"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P057.tar.gz",
+      "name": "D2_Sensor_P057.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "7ad352d81965eeb27f91c06117e7a268",
+      "contentSize": "14719825",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766576"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P058.tar.gz",
+      "name": "D2_Sensor_P058.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "57b8945c70bf38deb56ab534a074a3ed",
+      "contentSize": "41737695",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766592"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P059.tar.gz",
+      "name": "D2_Sensor_P059.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "2d6d2c93c29145ddedbdf68d6514ba38",
+      "contentSize": "24862621",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766597"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P060.tar.gz",
+      "name": "D2_Sensor_P060.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "e25b421da9df49c59148266982517dfc",
+      "contentSize": "21550433",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766548"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P061.tar.gz",
+      "name": "D2_Sensor_P061.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "dfa2ab601dc82f64d275a734239344bf",
+      "contentSize": "14231745",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766624"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P062.tar.gz",
+      "name": "D2_Sensor_P062.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "a128805e055c129b07fe589007e38f5b",
+      "contentSize": "26407762",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766665"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P063.tar.gz",
+      "name": "D2_Sensor_P063.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "f9b98dd9e304cbe3ff47cb993dfa32f2",
+      "contentSize": "24906818",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766500"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P064.tar.gz",
+      "name": "D2_Sensor_P064.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "46be1bc6167571e282ed5134f8704a3d",
+      "contentSize": "42848382",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766526"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P065.tar.gz",
+      "name": "D2_Sensor_P065.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "b567928f0643b31fdd0fd2e70ea41237",
+      "contentSize": "76668917",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766701"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P066.tar.gz",
+      "name": "D2_Sensor_P066.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "b2ae17d7845dd85f3c7376da80f4ebd3",
+      "contentSize": "23171861",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766551"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P068.tar.gz",
+      "name": "D2_Sensor_P068.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "a6e52685f8673d27bdd3231a511a1f1f",
+      "contentSize": "17011440",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766475"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P069.tar.gz",
+      "name": "D2_Sensor_P069.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "ec38088e02320cb774ed8f659a4b72c0",
+      "contentSize": "24769704",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766404"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P070.tar.gz",
+      "name": "D2_Sensor_P070.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "0625bab4fdf161fd9bf6736976bac7ee",
+      "contentSize": "22150998",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766651"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P071.tar.gz",
+      "name": "D2_Sensor_P071.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "1d66e8c411c78d916983b233813b2244",
+      "contentSize": "27379957",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766610"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P072.tar.gz",
+      "name": "D2_Sensor_P072.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "07e064dc42e68066f4e1676bb05130c5",
+      "contentSize": "18259395",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766603"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P073.tar.gz",
+      "name": "D2_Sensor_P073.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "8489fc18044719dea0ad9f28c06669aa",
+      "contentSize": "25840839",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766626"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P075.tar.gz",
+      "name": "D2_Sensor_P075.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "f9b780630925f50960b65d95d65a1621",
+      "contentSize": "24308091",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766534"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P077.tar.gz",
+      "name": "D2_Sensor_P077.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "e47a4e82f3d233e5f0f94fee8c4d481f",
+      "contentSize": "30249022",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766670"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P078.tar.gz",
+      "name": "D2_Sensor_P078.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "083034aba78bbf3643c8bd98aaba7daa",
+      "contentSize": "17948521",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766687"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P080.tar.gz",
+      "name": "D2_Sensor_P080.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "8eae3ad1bf9d0bda1738084276582c4c",
+      "contentSize": "17313013",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766464"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P082.tar.gz",
+      "name": "D2_Sensor_P082.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "9e8c5bad2054f951100fc14df92da3f5",
+      "contentSize": "35428042",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766512"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P083.tar.gz",
+      "name": "D2_Sensor_P083.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "5ec901999d2a49a58406e6fcde992ec7",
+      "contentSize": "19275995",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766671"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P084.tar.gz",
+      "name": "D2_Sensor_P084.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "1959727f31b38943760bd287876c4f0d",
+      "contentSize": "19199420",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766674"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P085.tar.gz",
+      "name": "D2_Sensor_P085.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "49d1b46cdd6593e7a5f40a8170b057b0",
+      "contentSize": "19128780",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766594"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P086.tar.gz",
+      "name": "D2_Sensor_P086.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "d87a693f9432705c90c31aca820c8137",
+      "contentSize": "32606839",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766643"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P087.tar.gz",
+      "name": "D2_Sensor_P087.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "488572852d2b6c66b003348811fe6c64",
+      "contentSize": "24203687",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766609"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P088.tar.gz",
+      "name": "D2_Sensor_P088.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "838b0f303487fe59a162097b2cecbb3a",
+      "contentSize": "2827651",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766425"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P089.tar.gz",
+      "name": "D2_Sensor_P089.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "b2a2b6d7305e0485d160d3981d70b3e2",
+      "contentSize": "18295301",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766536"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P090.tar.gz",
+      "name": "D2_Sensor_P090.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "bda3b28b420713a304aa7d69d1680748",
+      "contentSize": "19888702",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766459"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P091.tar.gz",
+      "name": "D2_Sensor_P091.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "40ef59268b87200bdb3500194e4c8559",
+      "contentSize": "26979001",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766453"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P092.tar.gz",
+      "name": "D2_Sensor_P092.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "0d49202b26f1be845bf3f88b2c2450b9",
+      "contentSize": "15324628",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766627"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P093.tar.gz",
+      "name": "D2_Sensor_P093.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "ce4ac43d6e0f8bd3aebf334618c91166",
+      "contentSize": "12245164",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766424"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P094.tar.gz",
+      "name": "D2_Sensor_P094.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "93d07d1e50ce6a7da6109ab85fc28754",
+      "contentSize": "34291820",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766442"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P095.tar.gz",
+      "name": "D2_Sensor_P095.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "0bf30aeb4208567405a2d3b70e670b79",
+      "contentSize": "32215783",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766675"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P096.tar.gz",
+      "name": "D2_Sensor_P096.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "ac12eb3040d4d08875a4a5a2da668cab",
+      "contentSize": "28358276",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766633"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P097.tar.gz",
+      "name": "D2_Sensor_P097.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "18f6ee0d338e27802c6f44a413bd8241",
+      "contentSize": "20205671",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766625"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P098.tar.gz",
+      "name": "D2_Sensor_P098.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "530955973d9f11aaacd5fb28f3c4fb91",
+      "contentSize": "31569803",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766529"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P099.tar.gz",
+      "name": "D2_Sensor_P099.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "c20d24a907c5f2965fbfbe98ceee1eab",
+      "contentSize": "25058153",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766530"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P101.tar.gz",
+      "name": "D2_Sensor_P101.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "aa3041e1e2ae9703eeb8bb3961b993f7",
+      "contentSize": "29096204",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766533"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P104.tar.gz",
+      "name": "D2_Sensor_P104.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "53b73bdf8fd8c131d2aec57935b0b66e",
+      "contentSize": "13880425",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766384"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P105.tar.gz",
+      "name": "D2_Sensor_P105.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "279437884f6602578c279f88c270c94f",
+      "contentSize": "11458714",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766513"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P107.tar.gz",
+      "name": "D2_Sensor_P107.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "92881378bf3216cbdbaa26734d310a9d",
+      "contentSize": "41203429",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766550"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P108.tar.gz",
+      "name": "D2_Sensor_P108.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "de4cd9b388660e3f2cbb429feb79f6e4",
+      "contentSize": "53949760",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766454"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P111.tar.gz",
+      "name": "D2_Sensor_P111.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "0922dd911bc9f3a74b3a095a68567993",
+      "contentSize": "16282856",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766646"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P112.tar.gz",
+      "name": "D2_Sensor_P112.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "97145cc28a27b5f3c3376056714f4cd5",
+      "contentSize": "35219363",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766518"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P113.tar.gz",
+      "name": "D2_Sensor_P113.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "93a386d22eeb7a49923e50391a531abc",
+      "contentSize": "24072796",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766613"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P115.tar.gz",
+      "name": "D2_Sensor_P115.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "bf063796098e0b7a3c390f38b00cb917",
+      "contentSize": "28692050",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766611"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P116.tar.gz",
+      "name": "D2_Sensor_P116.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "27673dcfaa224d3531871934f155d116",
+      "contentSize": "17608308",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766461"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P117.tar.gz",
+      "name": "D2_Sensor_P117.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "03aaa7127340692656a9b9d2fce137cc",
+      "contentSize": "22254458",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766639"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P118.tar.gz",
+      "name": "D2_Sensor_P118.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "5a79bba40845d6ffde548835dd830c7e",
+      "contentSize": "19609130",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766628"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P120.tar.gz",
+      "name": "D2_Sensor_P120.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "df285f9a4fb2bb87a4d65ccf45e9e5df",
+      "contentSize": "22960175",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766697"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P122.tar.gz",
+      "name": "D2_Sensor_P122.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "5c43af4f3a97b9763907179c437a4c3d",
+      "contentSize": "82768555",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766663"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P123.tar.gz",
+      "name": "D2_Sensor_P123.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "748811a9384bb7a8b5ca2881f19ca717",
+      "contentSize": "23885989",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766441"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P124.tar.gz",
+      "name": "D2_Sensor_P124.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "db293b7f93a347ef7c9e8e920cf37208",
+      "contentSize": "20478757",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766614"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P125.tar.gz",
+      "name": "D2_Sensor_P125.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "21577fd36907293510c3057f7fb562af",
+      "contentSize": "18705871",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766457"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P126.tar.gz",
+      "name": "D2_Sensor_P126.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "824bc90ba24052027de31c7cca72901f",
+      "contentSize": "26579950",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766401"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P127.tar.gz",
+      "name": "D2_Sensor_P127.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "7907d5859f268e523cd90602d92f711c",
+      "contentSize": "30468722",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766644"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P128.tar.gz",
+      "name": "D2_Sensor_P128.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "6e660951ff4c00ee9d097ff55e12c847",
+      "contentSize": "29636291",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766666"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P129.tar.gz",
+      "name": "D2_Sensor_P129.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "8cbdb74e5054148e0b12e2f0e71c19ce",
+      "contentSize": "19523884",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766479"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P130.tar.gz",
+      "name": "D2_Sensor_P130.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "10c33a84e58161deaa10cacf7c2e51ea",
+      "contentSize": "35695651",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766402"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P131.tar.gz",
+      "name": "D2_Sensor_P131.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "a05c99318613749af6cedb8ed312b499",
+      "contentSize": "27283224",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766577"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P132.tar.gz",
+      "name": "D2_Sensor_P132.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "882d0dd54156bf096bb774a49abefc91",
+      "contentSize": "50854467",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766422"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P133.tar.gz",
+      "name": "D2_Sensor_P133.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "e738568419c3535cc897fd242d25ab4d",
+      "contentSize": "22233818",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766655"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P134.tar.gz",
+      "name": "D2_Sensor_P134.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "a2f6cc09ac90cf127cbf8a080d1ab190",
+      "contentSize": "42840604",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766653"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P135.tar.gz",
+      "name": "D2_Sensor_P135.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "788cda90614d56d0ce44ddfbe4460973",
+      "contentSize": "35339497",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766527"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D2/Sensor/D2_Sensor_P136.tar.gz",
+      "name": "D2_Sensor_P136.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "d1c01543f9e7702bb8cb778ef93816a6",
+      "contentSize": "21456856",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766511"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/EsmResponse.csv",
+      "name": "EsmResponse.csv",
+      "encodingFormat": "text/comma-separated-values",
+      "md5": "65c4ab44d9720edf8074789979db3c83",
+      "contentSize": "1897976",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766677"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/UserInfo.csv",
+      "name": "UserInfo.csv",
+      "encodingFormat": "text/comma-separated-values",
+      "md5": "0b1f4659e5ad2087a6395dcec4de23ce",
+      "contentSize": "6788",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766636"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P001.tar.gz",
+      "name": "D3_Sensor_P001.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "ffd785839ed2cece09880991bada94ff",
+      "contentSize": "8257409",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766505"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P002.tar.gz",
+      "name": "D3_Sensor_P002.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "4b78cfe7282cb90bb68fb6ec3a338db0",
+      "contentSize": "11517354",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766515"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P003.tar.gz",
+      "name": "D3_Sensor_P003.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "d6e4f42b94ce2b51c927a8b7bebdad38",
+      "contentSize": "11147949",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766471"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P007.tar.gz",
+      "name": "D3_Sensor_P007.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "433bc9689685d15009bee113c20e5e41",
+      "contentSize": "10319495",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766389"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P008.tar.gz",
+      "name": "D3_Sensor_P008.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "86a3916c1edb52f588ee077ff447095b",
+      "contentSize": "12696404",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766608"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P009.tar.gz",
+      "name": "D3_Sensor_P009.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "ef552d3fb95441b70ab3565244b5c674",
+      "contentSize": "13612565",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766612"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P010.tar.gz",
+      "name": "D3_Sensor_P010.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "6905d278f45671a42dc0861672430936",
+      "contentSize": "10422497",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766514"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P011.tar.gz",
+      "name": "D3_Sensor_P011.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "7f58a76aba389ab1c3972e33c03197e6",
+      "contentSize": "11340641",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766403"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P013.tar.gz",
+      "name": "D3_Sensor_P013.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "fbf8b86d66ef427e0ceee72646ec517a",
+      "contentSize": "15501226",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766574"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P014.tar.gz",
+      "name": "D3_Sensor_P014.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "63db72ca90bde5b406c0a98b71fcd26d",
+      "contentSize": "11245972",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766504"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P015.tar.gz",
+      "name": "D3_Sensor_P015.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "d985f496922ef34ffcaed7b6269240ae",
+      "contentSize": "10062204",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766496"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P016.tar.gz",
+      "name": "D3_Sensor_P016.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "8049464af6c63c5f0f59363c5ac0c1b0",
+      "contentSize": "12705408",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766426"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P018.tar.gz",
+      "name": "D3_Sensor_P018.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "b5efd2a1fc8a6542e8aae48bed9c9c5a",
+      "contentSize": "15680982",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766480"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P019.tar.gz",
+      "name": "D3_Sensor_P019.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "c53f02b9fdb32564434cab433b681420",
+      "contentSize": "16484238",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766435"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P020.tar.gz",
+      "name": "D3_Sensor_P020.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "4136ae39344b76fef150c652460cf94e",
+      "contentSize": "12831089",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766563"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P021.tar.gz",
+      "name": "D3_Sensor_P021.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "4ee4ca50c7581cd88a9e9cb1536300d6",
+      "contentSize": "9409744",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766678"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P022.tar.gz",
+      "name": "D3_Sensor_P022.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "a2b2bcb3a8751905162afdf75a771c14",
+      "contentSize": "8204705",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766528"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P023.tar.gz",
+      "name": "D3_Sensor_P023.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "8fe3cff0ecc585608425f7ddbd78ca6e",
+      "contentSize": "11356056",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766483"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P024.tar.gz",
+      "name": "D3_Sensor_P024.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "8f84006205c8a02a2d07ea95111564fe",
+      "contentSize": "8129223",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766516"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P025.tar.gz",
+      "name": "D3_Sensor_P025.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "8a66e934c3bec8de4b13869af1d9b185",
+      "contentSize": "9396341",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766510"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P026.tar.gz",
+      "name": "D3_Sensor_P026.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "22e43e2c310b0d9ca727b9a6c2774eb6",
+      "contentSize": "14933050",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766392"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P027.tar.gz",
+      "name": "D3_Sensor_P027.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "35b68b79cd1b9085a7c9caa29825488b",
+      "contentSize": "14012012",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766704"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P028.tar.gz",
+      "name": "D3_Sensor_P028.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "2cac98fd1597ab0a7e016e0f6158d1d4",
+      "contentSize": "13883521",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766602"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P029.tar.gz",
+      "name": "D3_Sensor_P029.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "8b781b2d462f0f79329fd71100ffb587",
+      "contentSize": "12480776",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766397"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P030.tar.gz",
+      "name": "D3_Sensor_P030.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "26641f5fbaa858050076f9f73e07e86b",
+      "contentSize": "8651377",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766410"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P033.tar.gz",
+      "name": "D3_Sensor_P033.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "0e86c46426e13e176638f25b421c53b5",
+      "contentSize": "9841329",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766386"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P034.tar.gz",
+      "name": "D3_Sensor_P034.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "49321398ef8be3ac086bae40bf835e03",
+      "contentSize": "7248622",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766654"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P035.tar.gz",
+      "name": "D3_Sensor_P035.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "f4f9631e8099949a594409c0d3f8c364",
+      "contentSize": "18781746",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766411"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P037.tar.gz",
+      "name": "D3_Sensor_P037.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "c329945a620a121fdff7082d23fa2930",
+      "contentSize": "12625638",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766395"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P038.tar.gz",
+      "name": "D3_Sensor_P038.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "9c9ff1f509ded89b762dc227c1138a7b",
+      "contentSize": "7782250",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766443"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P040.tar.gz",
+      "name": "D3_Sensor_P040.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "9fabc267d344e25fc77a7986d800b522",
+      "contentSize": "47250016",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766582"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P041.tar.gz",
+      "name": "D3_Sensor_P041.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "46a39c6e0dae8f2a5fd89bb57597bfea",
+      "contentSize": "7954396",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766560"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P042.tar.gz",
+      "name": "D3_Sensor_P042.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "37f24fda6b0010c9d9203c1f13dc3708",
+      "contentSize": "12174489",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766604"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P043.tar.gz",
+      "name": "D3_Sensor_P043.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "f620c07c86ba34b101cdf79ca9e26a0c",
+      "contentSize": "27179232",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766649"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P044.tar.gz",
+      "name": "D3_Sensor_P044.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "2017f5d66137c7c984722f3f66137f8a",
+      "contentSize": "25181125",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766598"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P045.tar.gz",
+      "name": "D3_Sensor_P045.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "a92ab1ea2066bcb5bb46aa63ba39fa1c",
+      "contentSize": "10739061",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766476"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P046.tar.gz",
+      "name": "D3_Sensor_P046.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "9897345d830facb5ce44287d90e48c56",
+      "contentSize": "11073942",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766387"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P047.tar.gz",
+      "name": "D3_Sensor_P047.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "d5860c6b35627e3ec071ed929d72989e",
+      "contentSize": "9024391",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766648"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P048.tar.gz",
+      "name": "D3_Sensor_P048.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "35201e16311d15346eb94042978e1c2a",
+      "contentSize": "7606356",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766445"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P049.tar.gz",
+      "name": "D3_Sensor_P049.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "1e8462abcb9519f394614925a938ece0",
+      "contentSize": "9256827",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766616"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P050.tar.gz",
+      "name": "D3_Sensor_P050.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "87f354dbd136e7b53dfa7e6f353b6c5f",
+      "contentSize": "7432126",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766501"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P051.tar.gz",
+      "name": "D3_Sensor_P051.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "c2df8c27efb2adc45caf056da6fe0ba1",
+      "contentSize": "9147266",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766556"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P052.tar.gz",
+      "name": "D3_Sensor_P052.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "07732396c8dea1e40adde5ecbcaeba02",
+      "contentSize": "9572668",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766642"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P054.tar.gz",
+      "name": "D3_Sensor_P054.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "3b798daafd1a0294a32c3c08cb31e281",
+      "contentSize": "12313810",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766667"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P055.tar.gz",
+      "name": "D3_Sensor_P055.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "1ea17ee6ee0a13b22572d438edde5649",
+      "contentSize": "10481364",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766532"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P056.tar.gz",
+      "name": "D3_Sensor_P056.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "b09d5a2bc90d73fa175718e37d073e71",
+      "contentSize": "9818229",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766699"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P057.tar.gz",
+      "name": "D3_Sensor_P057.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "a858ddde02b6c80457ca0a15ad35f630",
+      "contentSize": "9190095",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766688"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P058.tar.gz",
+      "name": "D3_Sensor_P058.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "55332c6683ab14eff8791dc76beeea70",
+      "contentSize": "12138145",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766669"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P059.tar.gz",
+      "name": "D3_Sensor_P059.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "6fca346d44624f2dc0960ddf6c2a718f",
+      "contentSize": "9222400",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766679"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P061.tar.gz",
+      "name": "D3_Sensor_P061.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "92a385cecd4d30971515ad4724ae7464",
+      "contentSize": "8365250",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766449"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P064.tar.gz",
+      "name": "D3_Sensor_P064.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "0b5114c7e0e638ab59808cdebb4294cd",
+      "contentSize": "7430754",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766433"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P065.tar.gz",
+      "name": "D3_Sensor_P065.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "4e7337be15ae9a2e6ef4163b012e03c8",
+      "contentSize": "10329627",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766394"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P066.tar.gz",
+      "name": "D3_Sensor_P066.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "4db1cbd44fa1a48001975849d9676a22",
+      "contentSize": "9467104",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766660"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P067.tar.gz",
+      "name": "D3_Sensor_P067.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "36d4d745946faa7810e7046a5410c83e",
+      "contentSize": "7993790",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766623"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P069.tar.gz",
+      "name": "D3_Sensor_P069.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "7a54ce7fee085579b244820de9eab088",
+      "contentSize": "19402452",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766497"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P070.tar.gz",
+      "name": "D3_Sensor_P070.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "4ccd3639943c1263c0f913ac3c9b4ca8",
+      "contentSize": "10561258",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766542"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P071.tar.gz",
+      "name": "D3_Sensor_P071.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "096b7c336d4ab0035a2890f361d7c008",
+      "contentSize": "12438584",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766385"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P072.tar.gz",
+      "name": "D3_Sensor_P072.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "084d9527b5ad59ade31a7eeadb7da429",
+      "contentSize": "9761002",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766391"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P073.tar.gz",
+      "name": "D3_Sensor_P073.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "c8079111eebf658ce9a4d9d1f9aca3ad",
+      "contentSize": "13116258",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766676"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P074.tar.gz",
+      "name": "D3_Sensor_P074.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "39834785d703591eeb98ffb78f516be2",
+      "contentSize": "14140767",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766488"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P075.tar.gz",
+      "name": "D3_Sensor_P075.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "028f6ba442b7ce97450dcd6601d15bdf",
+      "contentSize": "8788337",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766692"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P076.tar.gz",
+      "name": "D3_Sensor_P076.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "e92e8dcbecec7dae4748e77d3647321a",
+      "contentSize": "18197828",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766685"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P077.tar.gz",
+      "name": "D3_Sensor_P077.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "3b9b0e5d0d7c3f6ab15d38c7bd5bd5fb",
+      "contentSize": "7675900",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766595"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P078.tar.gz",
+      "name": "D3_Sensor_P078.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "1e81eb212d0c25787a914890636439e7",
+      "contentSize": "17074269",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766641"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P079.tar.gz",
+      "name": "D3_Sensor_P079.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "1af3abc9bf24b74efcbcd1d6d4a508d1",
+      "contentSize": "14237121",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766446"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P081.tar.gz",
+      "name": "D3_Sensor_P081.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "9351c4b3bfa7d0fb0eecd9426693e261",
+      "contentSize": "11555608",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766631"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P083.tar.gz",
+      "name": "D3_Sensor_P083.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "3817f6f917672fc9425f42999ef70272",
+      "contentSize": "10404416",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766521"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P084.tar.gz",
+      "name": "D3_Sensor_P084.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "72db14ff12284bb46d43a624e679230a",
+      "contentSize": "6707464",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766452"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P086.tar.gz",
+      "name": "D3_Sensor_P086.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "5687360f3afc17a01a997d25c97c0297",
+      "contentSize": "8779880",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766658"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P087.tar.gz",
+      "name": "D3_Sensor_P087.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "327e5e0011e13a9beba42e5366b6ac2c",
+      "contentSize": "7602786",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766698"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P088.tar.gz",
+      "name": "D3_Sensor_P088.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "855cfa8499a9d863bdcb3c263694e956",
+      "contentSize": "13863209",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766571"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P090.tar.gz",
+      "name": "D3_Sensor_P090.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "67e73b3fa6545d3a4bf3b3690c50e04d",
+      "contentSize": "9547515",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766662"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P091.tar.gz",
+      "name": "D3_Sensor_P091.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "9d11d23c7b8f5f505958380ac7369aad",
+      "contentSize": "10415919",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766406"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P092.tar.gz",
+      "name": "D3_Sensor_P092.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "91e7d7206ddfb628f42117f75d94d03c",
+      "contentSize": "6713780",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766381"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P094.tar.gz",
+      "name": "D3_Sensor_P094.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "b867d12d3df9c18175fb57cf556cda2c",
+      "contentSize": "11047498",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766417"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P095.tar.gz",
+      "name": "D3_Sensor_P095.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "1869d4c61f7e8a754e6441f2ca02f321",
+      "contentSize": "10015575",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766606"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P096.tar.gz",
+      "name": "D3_Sensor_P096.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "bfc484c5e3435875e360bf448f376dd4",
+      "contentSize": "11467288",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766581"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P097.tar.gz",
+      "name": "D3_Sensor_P097.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "5f2f245e3dc126cfbcc0d5a50b9e676e",
+      "contentSize": "12600073",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766572"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P098.tar.gz",
+      "name": "D3_Sensor_P098.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "80ae9aa96d35b828ed03ed5f242228dc",
+      "contentSize": "9523855",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766540"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P099.tar.gz",
+      "name": "D3_Sensor_P099.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "af7f6a0945a940453f10e1d08b92e70a",
+      "contentSize": "10150054",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766537"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P101.tar.gz",
+      "name": "D3_Sensor_P101.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "0fcec675b1f051d11ac1008468f01bde",
+      "contentSize": "5313519",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766382"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P102.tar.gz",
+      "name": "D3_Sensor_P102.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "f0f5b84897681cdbd60975d1923a6c6f",
+      "contentSize": "9567927",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766694"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P103.tar.gz",
+      "name": "D3_Sensor_P103.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "fba5cb17ba1b2b33e0028a500c173bb7",
+      "contentSize": "13117909",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766541"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P104.tar.gz",
+      "name": "D3_Sensor_P104.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "a9786d63faa099ef551d5c4e4b6f6913",
+      "contentSize": "13434941",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766647"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P105.tar.gz",
+      "name": "D3_Sensor_P105.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "9d9a34e1d012fc6c1d8cc69157b4d9a8",
+      "contentSize": "14307748",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766591"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P107.tar.gz",
+      "name": "D3_Sensor_P107.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "2e5283b144b826607f244dc1d804b4f4",
+      "contentSize": "10149748",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766621"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P108.tar.gz",
+      "name": "D3_Sensor_P108.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "3dc30be2d1c239268e61f3fe32166a20",
+      "contentSize": "10125369",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766437"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P109.tar.gz",
+      "name": "D3_Sensor_P109.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "6b207d072fbe9ea6507680f8e1307fbd",
+      "contentSize": "13616774",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766450"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P110.tar.gz",
+      "name": "D3_Sensor_P110.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "070857fe66a440933bf1a54f7f31e193",
+      "contentSize": "18067565",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766684"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P114.tar.gz",
+      "name": "D3_Sensor_P114.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "9416fe87e9129e2e5dd6b77496b3343e",
+      "contentSize": "6673138",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766463"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P115.tar.gz",
+      "name": "D3_Sensor_P115.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "2bab4fa803412638e718a65e750dcfee",
+      "contentSize": "11116897",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766689"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P116.tar.gz",
+      "name": "D3_Sensor_P116.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "9ce16bc057a35ef6bf89f9728395fa4b",
+      "contentSize": "12312159",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766544"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P117.tar.gz",
+      "name": "D3_Sensor_P117.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "33edf6ee011fb82abe4fc9a349712b60",
+      "contentSize": "9829259",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766589"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P118.tar.gz",
+      "name": "D3_Sensor_P118.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "84ce802dc8658ee2bbd09f37ddc50212",
+      "contentSize": "10720486",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766393"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P119.tar.gz",
+      "name": "D3_Sensor_P119.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "8ff8bfc5b3a51c2916cd2f20651a076b",
+      "contentSize": "15141529",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766538"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P120.tar.gz",
+      "name": "D3_Sensor_P120.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "ba7b821db094e1e9665bee3a5eacbfad",
+      "contentSize": "9777109",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766380"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P121.tar.gz",
+      "name": "D3_Sensor_P121.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "c3d77c3f092c49eb4d152ee44f560445",
+      "contentSize": "6681178",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766587"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P122.tar.gz",
+      "name": "D3_Sensor_P122.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "fbd433a3bfb10711c7993fd08efa345f",
+      "contentSize": "6258921",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766427"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P123.tar.gz",
+      "name": "D3_Sensor_P123.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "c654148b67f51d5d00ca5a8730b6a40d",
+      "contentSize": "7399798",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766444"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P124.tar.gz",
+      "name": "D3_Sensor_P124.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "79adebc2416449f0d8a1b6fa6df6ac13",
+      "contentSize": "15103180",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766462"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P125.tar.gz",
+      "name": "D3_Sensor_P125.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "69a3341c86fec850b1855d591b30ab52",
+      "contentSize": "12664297",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766599"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P126.tar.gz",
+      "name": "D3_Sensor_P126.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "d6bb35a63e6828e2aeaeb9ddbf9dd116",
+      "contentSize": "8278839",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766474"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P127.tar.gz",
+      "name": "D3_Sensor_P127.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "2a2d96f85981b54faa3111654b9c7d7d",
+      "contentSize": "12138229",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766423"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P131.tar.gz",
+      "name": "D3_Sensor_P131.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "f39b7d3b35e4556ebca86c2cf8ab4fd3",
+      "contentSize": "10792234",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766696"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P133.tar.gz",
+      "name": "D3_Sensor_P133.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "928c04467673e656f46a26b0e4f9cbb4",
+      "contentSize": "15217040",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766522"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "D3/Sensor/D3_Sensor_P135.tar.gz",
+      "name": "D3_Sensor_P135.tar.gz",
+      "encodingFormat": "application/x-gzip",
+      "md5": "959c05d4d3e5ef650c6a68e13a3b23ae",
+      "contentSize": "9285935",
+      "description": "",
+      "contentUrl": "https://dataverse.harvard.edu/api/access/datafile/13766607"
+    }
+  ],
+  "rai:dataLimitations": "This dataset consists of three annual, in-the-wild mobile and wearable affect sensing collections from a university-student cohort. As a result, its applicability is limited by several factors. First, the participant population is relatively narrow: participants were recruited from a university campus, are mostly young adults, and all used their own Android smartphones, so the dataset should not be treated as representative of the general population, iOS users, children, or older adults. Second, the three yearly datasets were collected under related but not identical protocols: wearable availability differed across years, some questionnaire content changed, and D3 introduced richer PANAS-style affect items. Third, missingness and partial coverage are unavoidable in real-world sensing because of non-response, device failures, syncing problems, and unequal wearable coverage. Some modalities were excluded from modeling because of low collection rates or known collection issues.\n\nThis dataset is intended for research benchmarking and method development. It is not recommended for clinical diagnosis, high-stakes mental-health screening, individual decision-making in employment or education, or any application requiring population-representative estimates or precise geolocation inference.",
+  "rai:dataBiases": "Several biases may affect this dataset. The dataset is subject to selection bias, because participation was voluntary and recruitment was conducted through a university-campus channel; the resulting cohort reflects a subset of Android-using university students rather than the broader public. The dataset also has demographic skew, especially toward young adults, and the gender balance varies across yearly collections. In addition, compliance bias may be present, because participants with lower response rates, missing wearable data, or insufficient smartphone coverage were excluded during quality control. This may bias the retained sample toward participants who were more compliant, more technically stable, or easier to monitor.\n\nThe labels are based on self-reported ESM responses, so they may also contain label bias arising from subjective interpretation, momentary self-assessment, survey interruption effects, or response fatigue. Finally, there is protocol and temporal bias across the three annual datasets: sensing coverage, wearable setup, and questionnaire design changed over time, and some collections overlapped with different pandemic-period conditions. These factors may affect model behavior and may lead to uneven performance across user groups, years, and collection conditions.",
+  "rai:personalSensitiveInformation": "This dataset contains personal and sensitive information. The applicable categories are:\n\n-Gender\n-Geography (location traces are present, although privacy-preserving transformations are applied)\n-Age\n-Health or medical data (e.g., psychological and mental-health-related questionnaire measures such as PSS-10, PHQ-9, and GHQ-12)\n\nOthers (please specify):\n-smartphone interaction and behavioral traces (e.g., app/device usage events)\n-wearable physiological and activity data (e.g., heart rate, step count, calories, distance)\n-communication metadata and proximity/network traces (with privacy-preserving transformations such as hashing or identifier replacement)\n\nThe dataset does not explicitly include political or religious beliefs. It also does not explicitly provide a dedicated socioeconomic-status field in the released metadata. Personally identifiable fields were transformed before release using measures such as MD5 hashing of contact numbers, UUID replacement of MAC addresses, and random displacement of GPS longitude coordinates.",
+  "rai:dataUseCases": "This dataset is intended to represent moment-level affective and stress-related states in everyday life, as measured through repeated in-situ self-reports collected via the Experience Sampling Method (ESM), together with passive sensing from smartphones and wearables. The main target constructs include valence, arousal, stress, and task disturbance, with richer PANAS-style affect word intensities available in D3.\n\nThe dataset has been validated for research use cases such as:\n\n-moment-level affect prediction from passive mobile and wearable sensing\n-personalized / within-person affect modeling\n-cross-user generalization benchmarking\n-cross-dataset / cross-year transfer benchmarking\n-longitudinal analysis of behavioral and affective variability\n\nThese use cases are supported by the collection design, shared label space across datasets, and baseline benchmarking reported for cross-dataset modeling. However, the dataset has not been validated for clinical diagnosis, medical decision support, automated triage, employee/student evaluation, or high-stakes individual-level interventions. Performance and fairness for populations outside the sampled cohort are also not established.",
+  "rai:dataSocialImpact": "Potential positive social impacts include enabling more realistic benchmarking for mobile affect sensing, improving methods for personalized and cross-user modeling, and supporting research on stress- and affect-aware systems in naturalistic settings. The dataset may also help the community study robustness, personalization, and generalization under real-world user heterogeneity.\n\nPotential negative impacts include misuse for surveillance, emotion or stress inference without consent, or inappropriate deployment in contexts such as workplaces, schools, or insurance settings. Because the dataset is drawn from a relatively narrow cohort, models trained on it may perform unevenly across demographic groups, device contexts, or populations not represented in the study. There are also privacy risks inherent in behavioral, physiological, and location-related traces, even after de-identification.\n\nTo mitigate these risks, the dataset was collected under IRB approval, participants provided informed consent, participation was voluntary, privacy-preserving transformations were applied to sensitive fields, and the release is governed by access restrictions / usage terms for authorized research use. Users should not treat the dataset as evidence that models are safe or fair for high-stakes deployment.",
+  "rai:hasSyntheticData": false,
+  "prov:wasGeneratedBy": [
+    {
+      "@type": "prov:Activity",
+      "prov:type": {
+        "@id": "https://www.wikidata.org/wiki/Q4929239"
+      },
+      "prov:label": "Data Collection",
+      "sc:description": "Participants were recruited from a university campus and attended an offline orientation session before data collection. They installed a custom Android data collection application, wore Fitbit devices throughout the study period. ESM prompts were delivered during waking hours (10 AM–10 PM) at random intervals, and participants completed repeated self-reports about affective state. The study team monitored uploads and participant compliance during collection."
+    },
+    {
+      "@type": "prov:Activity",
+      "prov:type": {
+        "@id": "https://www.wikidata.org/wiki/Q109719325"
+      },
+      "prov:label": "Annotation",
+      "sc:description": "Labels were provided directly by participants through ESM responses at each prompt. These labels include valence, arousal, stress, disturbance, and, in D3, PANAS-style affect word intensities. No third-party crowd annotators or synthetic annotators were used for the primary labels."
+    },
+    {
+      "@type": "prov:Activity",
+      "prov:type": {
+        "@id": "https://www.wikidata.org/wiki/Q5227332"
+      },
+      "prov:label": "Data Preprocessing",
+      "sc:description": "The raw files underwent structural validation and cleaning, including removal of incomplete rows, removal of invalid duplicate observations for time-based streams, sensor-specific outlier filtering, semantic consistency checks, and exclusion of low-coverage streams and participants that failed quality thresholds. Privacy-preserving transformations were applied before release, including hashing of contact numbers, UUID replacement of MAC addresses, and displacement of GPS longitude coordinates."
+    }
+  ]
+}
