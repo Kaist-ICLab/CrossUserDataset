@@ -9,7 +9,7 @@ A reviewer-facing checklist that pre-answers the standard Datasets and Benchmark
 | Requirement | Status | Location |
 |---|---|---|
 | Gebru-style **Datasheet for Datasets** | ✓ | [`../DATASHEET.md`](../DATASHEET.md) |
-| **Croissant** ML Commons metadata | ✓ | [`../metadata/croissant.json`](../metadata/croissant.json) |
+| **Croissant** ML Commons metadata | ✓ | [`../metadata/croissant_rai_EmoPhone_A_Multi-Wave_Dataset_for_In-the-Wild_Mob.json`](../metadata/croissant_rai_EmoPhone_A_Multi-Wave_Dataset_for_In-the-Wild_Mob.json) |
 | Per-wave **schema** / column reference | ✓ | [`../data/schema.md`](../data/schema.md) |
 | **Data README** (download, folder structure, loading) | ✓ | [`../data/README.md`](../data/README.md) |
 | **Repository README** (overview, benchmark, layout) | ✓ | [`../README.md`](../README.md) |
@@ -29,7 +29,7 @@ A reviewer-facing checklist that pre-answers the standard Datasets and Benchmark
 | Requirement | Status | Location |
 |---|---|---|
 | Data hosted on a stable public repository | ✓ (Harvard Dataverse) | [`../README.md § Data Access`](../README.md#data-access); DOI TBD on acceptance |
-| **Persistent DOI** committed to | ✓ (placeholder `TBD on acceptance`) | [`../CITATION.cff`](../CITATION.cff), [`../metadata/croissant.json`](../metadata/croissant.json), [`../README.md`](../README.md) |
+| **Persistent DOI** committed to | ✓ (placeholder `TBD on acceptance`) | [`../CITATION.cff`](../CITATION.cff), [`../metadata/croissant_rai_EmoPhone_A_Multi-Wave_Dataset_for_In-the-Wild_Mob.json`](../metadata/croissant_rai_EmoPhone_A_Multi-Wave_Dataset_for_In-the-Wild_Mob.json), [`../README.md`](../README.md) |
 | Integrity verification | ✓ (checksum file placeholder) | [`../metadata/checksums.md5`](../metadata/checksums.md5) |
 
 ## Citation
@@ -88,7 +88,7 @@ The following placeholders will be populated on paper acceptance (they are held 
 
 - Author names and affiliations ([`../AUTHORS.md`](../AUTHORS.md), [`../CITATION.cff`](../CITATION.cff), [`../DATASHEET.md`](../DATASHEET.md)).
 - IRB number and institution ([`../DATASHEET.md`](../DATASHEET.md), [`../RESPONSIBILITY.md`](../RESPONSIBILITY.md), [`./ethics.md`](./ethics.md)).
-- Harvard Dataverse DOI and file IDs ([`../metadata/croissant.json`](../metadata/croissant.json), [`../CITATION.cff`](../CITATION.cff), [`../README.md`](../README.md)).
+- Harvard Dataverse DOI and file IDs ([`../metadata/croissant_rai_EmoPhone_A_Multi-Wave_Dataset_for_In-the-Wild_Mob.json`](../metadata/croissant_rai_EmoPhone_A_Multi-Wave_Dataset_for_In-the-Wild_Mob.json), [`../CITATION.cff`](../CITATION.cff), [`../README.md`](../README.md)).
 - Contact email ([`../README.md`](../README.md), [`../DATASHEET.md`](../DATASHEET.md), [`../MAINTENANCE.md`](../MAINTENANCE.md), [`../CONTRIBUTING.md`](../CONTRIBUTING.md), [`../RESPONSIBILITY.md`](../RESPONSIBILITY.md)).
 - Code and data licenses / DUA terms ([`../LICENSE`](../LICENSE), [`../LICENSE-DATA.md`](../LICENSE-DATA.md), [`../CITATION.cff`](../CITATION.cff)).
 - Full translated consent form ([`./consent_form_en.md`](./consent_form_en.md)).

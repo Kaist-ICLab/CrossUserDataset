@@ -7,7 +7,7 @@
 [![DOI](https://img.shields.io/badge/DOI-TBD%20on%20acceptance-lightgrey)](#citation)
 [![Paper](https://img.shields.io/badge/Paper-NeurIPS%202026%20D%26B-green)](#citation)
 [![Datasheet](https://img.shields.io/badge/Docs-Datasheet-orange)](./DATASHEET.md)
-[![Croissant](https://img.shields.io/badge/Metadata-Croissant-7f52b5)](./metadata/croissant.json)
+[![Croissant](https://img.shields.io/badge/Metadata-Croissant-7f52b5)](./metadata/croissant_rai_EmoPhone_A_Multi-Wave_Dataset_for_In-the-Wild_Mob.json)
 [![Harvard Dataverse](https://img.shields.io/badge/Data-Harvard%20Dataverse-red)](#data-access)
 
 > **Dataset name, DOI, paper title, authors, and licenses are finalized on acceptance/public release.** This repository uses the working name `EmoPhone`; final names and legal terms will be substituted throughout before release.
@@ -143,7 +143,10 @@ EmoPhone/
 ├── preprocessing/
 │   ├── README.md                     ← pipeline overview & Zhang 2024 reference
 │   ├── pipeline_decisions.md         ← per-wave QC, scale normalisation, alias map
-│   └── feature_alignment.md          ← mirrors docs/feature_alignment.md
+│   ├── feature_alignment.md          ← mirrors docs/feature_alignment.md
+│   ├── 01_preprocessing/             ← per-wave app-categorisation + ESM cleanup notebooks
+│   ├── 02_feature_extraction/        ← per-wave feature + label-sync extraction notebooks
+│   └── common/                       ← shared sliding-window utilities used across waves
 │
 ├── benchmark/                        ← protocol specs + result tables (docs only)
 │   ├── README.md                     ← three-setting ladder + model inventory
@@ -177,7 +180,8 @@ EmoPhone/
 ├── EDA/                              ← dataset-characterisation notebooks
 ├── images/                           ← figures referenced by READMEs
 └── metadata/
-    ├── croissant.json                ← ML Commons Croissant metadata
+    ├── croissant_rai_EmoPhone_A_Multi-Wave_Dataset_for_In-the-Wild_Mob.json
+    │                                ← ML Commons Croissant metadata
     └── checksums.md5                 ← per-archive SHA/MD5 (populated on release)
 ```
 
