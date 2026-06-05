@@ -65,7 +65,7 @@ When a data-level update is required (e.g., a newly discovered preprocessing bug
 
 1. Document the change in [`CHANGELOG.md`](./CHANGELOG.md).
 2. Publish a new Dataverse version; keep prior versions live.
-3. Update [`metadata/checksums.md5`](./metadata/checksums.md5) and [`metadata/croissant.json`](./metadata/croissant.json) to reference the new files.
+3. Update [`metadata/checksums.md5`](./metadata/checksums.md5) and [`metadata/croissant_rai_EmoPhone_A_Multi-Wave_Dataset_for_In-the-Wild_Mob.json`](./metadata/croissant_rai_EmoPhone_A_Multi-Wave_Dataset_for_In-the-Wild_Mob.json) to reference the new files.
 4. Tag the corresponding git release (e.g., `v1.1.0`).
 
 ---
