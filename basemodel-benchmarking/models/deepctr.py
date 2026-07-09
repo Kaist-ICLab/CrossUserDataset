@@ -8,8 +8,8 @@ import torch.nn as nn
 from deepctr_torch.inputs import DenseFeat, SparseFeat
 from deepctr_torch.models import DCN as DeepCTRDCN
 from deepctr_torch.models import AutoInt as DeepCTRAutoInt
+from deepctr_torch.callbacks import EarlyStopping
 from sklearn.base import BaseEstimator, ClassifierMixin
-from tensorflow.python.keras.callbacks import Callback
 
 logger = logging.getLogger(__name__)
 
@@ -178,7 +178,7 @@ class DeepCTRWrapper(BaseEstimator, ClassifierMixin):
                 val_model_input = self._transform_dense_input(X_val)
             val_data = (val_model_input, y_val)
             if self.patience > 0:
-                early_stopping = TorchStateDictEarlyStopping(
+                early_stopping = EarlyStopping(
                     monitor="val_auc",
                     min_delta=1e-4,
                     patience=self.patience,
@@ -198,13 +198,21 @@ class DeepCTRWrapper(BaseEstimator, ClassifierMixin):
             verbose=0,
         )
         history_dict = getattr(history, "history", {}) or {}
-        epochs_ran = len(history_dict.get("loss", [])) or self.epochs
-        best_epoch = (
-            (early_stopping.best_epoch + 1)
-            if (early_stopping and early_stopping.best_epoch is not None)
-            else None
-        )
-        early_stopped = bool(early_stopping and early_stopping.stopped_epoch > 0)
+        loss_history = history_dict.get("loss", [])
+        epochs_ran = len(loss_history)
+        
+        # we have to determine 'best_epoch' by finding the index of the max val_auc ourselves
+        best_epoch = None
+        early_stopped = False
+        
+        if self.patience > 0 and early_stopping is not None:
+            if epochs_ran < self.epochs:
+                early_stopped = True
+            
+            val_auc = history_dict.get("val_auc", [])
+            if val_auc:
+                best_epoch = int(np.argmax(val_auc))
+
         attach_training_metadata(
             self,
             optimizer="Adam",
