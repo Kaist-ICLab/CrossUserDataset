@@ -32,7 +32,6 @@ from pytorch_widedeep.preprocessing import TabPreprocessor
 from pytorch_widedeep.training import Trainer as WideTrainer
 from pytorch_widedeep.training._wd_dataset import WideDeepDataset
 from sklearn.base import BaseEstimator, ClassifierMixin
-from tensorflow.python.keras.callbacks import Callback
 from torchmetrics.classification import BinaryAUROC
 
 logger = logging.getLogger(__name__)
@@ -493,70 +492,3 @@ class WidedeepWrapper(BaseEstimator, ClassifierMixin):
         df = pd.DataFrame(X, columns=self.col_names)
         X_tab = self.preprocessor.transform(df)
         return self.trainer.predict_proba(X_tab={"X_tab": X_tab})
-
-
-class TorchStateDictEarlyStopping(Callback):
-    def __init__(
-        self,
-        monitor="val_auc",
-        min_delta=1e-4,
-        patience=0,
-        verbose=0,
-        mode="max",
-        restore_best_weights=True,
-    ):
-        super().__init__()
-        self.monitor = monitor
-        self.min_delta = abs(min_delta)
-        self.patience = int(patience)
-        self.verbose = verbose
-        self.mode = mode
-        self.restore_best_weights = restore_best_weights
-        self.wait = 0
-        self.stopped_epoch = 0
-        self.best_epoch = None
-        self.best_state_dict = None
-
-        if mode == "min":
-            self.monitor_op = np.less
-            self.min_delta *= -1
-        else:
-            self.monitor_op = np.greater
-
-    def on_train_begin(self, logs=None):
-        self.wait = 0
-        self.stopped_epoch = 0
-        self.best_epoch = None
-        self.best_state_dict = None
-        self.best = np.inf if self.monitor_op == np.less else -np.inf
-
-    def on_epoch_end(self, epoch, logs=None):
-        logs = logs or {}
-        current = logs.get(self.monitor)
-        if current is None:
-            return
-
-        if self._is_improvement(current, self.best):
-            self.best = current
-            self.best_epoch = epoch
-            self.wait = 0
-            if self.restore_best_weights:
-                self.best_state_dict = {
-                    key: value.detach().cpu().clone()
-                    for key, value in self.model.state_dict().items()
-                }
-            return
-
-        self.wait += 1
-        if self.wait < self.patience:
-            return
-
-        self.stopped_epoch = epoch + 1
-        self.model.stop_training = True
-        if self.restore_best_weights and self.best_state_dict is not None:
-            self.model.load_state_dict(self.best_state_dict)
-        if self.verbose > 0:
-            logger.info(f"Epoch {epoch + 1:05d}: early stopping")
-
-    def _is_improvement(self, current, best):
-        return self.monitor_op(current - self.min_delta, best)

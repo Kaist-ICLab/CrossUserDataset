@@ -1301,10 +1301,10 @@ def main():
         for seed in seeds:
             logger.info(f"\n--- Fold {fold_id + 1} | Seed {seed} ---")
 
-            logger = BenchmarkLogger(output_dir=records_dir, benchmark_type="cross_user")
+            benchmark_logger = BenchmarkLogger(output_dir=records_dir, benchmark_type="cross_user")
 
             clip_val = float(max(10.0, np.percentile(np.abs(entry["X_train"].reshape(-1)), 99.9)))
-            logger.set_setting(
+            benchmark_logger.set_setting(
                 dataset=args.dataset,
                 label=args.label,
                 model=args.model,
@@ -1318,7 +1318,7 @@ def main():
                 max_epochs=args.epochs,
                 patience=args.patience,
             )
-            logger.record_policy(
+            benchmark_logger.record_policy(
                 seeds=seeds,
                 planned_hpo_trials=args.hpo_trials,
                 hpo_mode=args.hpo_mode,
@@ -1326,8 +1326,8 @@ def main():
                 default_batch_size=args.batch_size,
                 patience=args.patience,
             )
-            logger.set_preprocessing(clip_value=clip_val)
-            logger.set_split_stats(
+            benchmark_logger.set_preprocessing(clip_value=clip_val)
+            benchmark_logger.set_split_stats(
                 entry["y_train"],
                 ds.users[entry["train_idx"]],
                 entry["y_val"],
@@ -1336,14 +1336,14 @@ def main():
                 ds.users[entry["test_idx"]],
             )
             if fold_study is not None:
-                logger.record_hpo(fold_study, fold_hparams)
+                benchmark_logger.record_hpo(fold_study, fold_hparams)
             else:
-                logger.record_hpo_no_study(fold_hparams)
+                benchmark_logger.record_hpo_no_study(fold_hparams)
 
             X_val_train = entry["X_val"]
             y_val_train = entry["y_val"]
 
-            with logger.time_train():
+            with benchmark_logger.time_train():
                 model = train_model(
                     args,
                     entry["X_train"],
@@ -1361,11 +1361,11 @@ def main():
                     X_target=X_target,
                 )
 
-            logger.record_training(model)
-            logger.record_model_stats(model, input_dim=entry["X_train"].shape[1])
-            selected_batch_size = logger._rec["training"].get("batch_size")
+            benchmark_logger.record_training(model)
+            benchmark_logger.record_model_stats(model, input_dim=entry["X_train"].shape[1])
+            selected_batch_size = benchmark_logger._rec["training"].get("batch_size")
 
-            with logger.time_eval():
+            with benchmark_logger.time_eval():
                 train_m = evaluate_extended(
                     model, entry["X_train"], entry["y_train"], batch_size=selected_batch_size
                 )
@@ -1376,11 +1376,11 @@ def main():
                     model, entry["X_test"], entry["y_test"], batch_size=selected_batch_size
                 )
 
-            logger.record_metrics(train_m, val_m, test_m)
-            logger.record_inference_benchmark(
+            benchmark_logger.record_metrics(train_m, val_m, test_m)
+            benchmark_logger.record_inference_benchmark(
                 model, entry["X_test"], batch_size=selected_batch_size, split_name="test"
             )
-            record = logger.finalize()
+            record = benchmark_logger.finalize()
             rt = record["runtime"]
             tr = record["training"]
             ss = record["split_stats"]
