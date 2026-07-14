@@ -15,8 +15,10 @@ from .._da_helpers import (
     EarlyStopTracker,
     _build_loaders,
     _evaluate_val,
+    _finalize_training_metadata,
     _infinite_iterator,
 )
+from ..da_tllib_losses import DomainDiscriminator
 
 
 class ADDA(nn.Module):

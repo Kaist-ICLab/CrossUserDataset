@@ -8,6 +8,7 @@ import torch
 import torch.autograd as autograd
 import torch.nn as nn
 import torch.nn.functional as F
+from scipy.spatial.distance import cdist
 from sklearn.metrics import roc_auc_score
 from torch.autograd import grad
 from tqdm import tqdm
